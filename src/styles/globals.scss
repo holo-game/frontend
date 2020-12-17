@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swap");
+@import "~swiper/swiper.scss";
+@import "~swiper/components/effect-coverflow/effect-coverflow.scss";
+@import "/css/bootstrap.min.css";
+@import "/css/font-awesome.min.css";
+@import "./variables.scss";
+@import "./breakpoints.scss";
+@import "./utilites.scss";
+@import "./header.module.scss";
+@import "./navbar.module.scss";
+@import "./carousel.module.scss";
+@import "./hero-search.module.scss";
+@import "./button.module.scss";
+@import "./form.module.scss";
+@import "./paragraph.module.scss";
+@import "./game-card.module.scss";
+@import "./footer.module.scss";
+@import "./topbar.module.scss";
+
+html,
+body {
+  color: $text-primary;
+  background-color: $bg-body;
+  padding: 0;
+  margin: 0;
+  font-family: "Mulish", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  &:hover {
+    color: inherit;
+    text-decoration: inherit;
+  }
+}
+
+button {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mx-n2 {
+  margin: 0 -0.5rem !important;
+}
+
+@media (max-width: $breakpoint-mobile) {
+  body {
+    font-size: 14px;
+  }
+}

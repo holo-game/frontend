@@ -1,0 +1,29 @@
+.header {
+  position: relative;
+  padding: 15px 0;
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .header-brand {
+      width: 140px;
+      a {
+        display: block;
+        :hover {
+          opacity: 0.8;
+        }
+        img {
+          width: 100%;
+        }
+      }
+    }
+    .header-nav {
+      display: flex;
+      align-items: center;
+      margin: 0 -7.5px;
+      li {
+        padding: 0 7.5px;
+      }
+    }
+  }
+}

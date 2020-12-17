@@ -1,0 +1,12 @@
+.paragraph {
+  display: flex;
+  align-items: center;
+  i {
+    margin-right: 20px;
+    font-size: 1.5em;
+  }
+  .paragraph-title {
+    margin: 0;
+    color: rgba($text-primary, 80%);
+  }
+}

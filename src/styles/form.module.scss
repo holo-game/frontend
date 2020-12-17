@@ -1,0 +1,45 @@
+.input-group {
+  position: relative;
+  .input-group-addon {
+    position: absolute;
+    top: 50%;
+    right: 4px;
+    height: 81%;
+    width: 29px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 0;
+    font-size: 0.9em;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+}
+.form-control {
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+  height: 36px;
+  padding: 0 12px;
+  outline: none;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Mulish", sans-serif;
+  & {
+    color: $text-secondary;
+    background-color: $bg-primary;
+    border-color: rgba($bg-secondary, 15%);
+  }
+  &.invert {
+    color: $text-primary;
+    background-color: rgba($bg-primary, 10%);
+    border-color: rgba($bg-primary, 10%);
+    &:focus {
+      color: $text-secondary;
+      background-color: #fff;
+    }
+  }
+  &.with-addon {
+    padding-right: 45px;
+  }
+}

@@ -1,0 +1,30 @@
+.topbar {
+  position: relative;
+  background-color: rgba($bg-primary, 10%);
+  .topbar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    .topbar-nav {
+      display: flex;
+      margin: 0 -15px;
+      li {
+        color: rgba($text-primary, 60%);
+        margin: 0 15px;
+        font-size: 0.8em;
+        a {
+          display: flex;
+          align-items: center;
+          color: inherit;
+          i {
+            margin-right: 10px;
+          }
+          &:hover {
+            color: rgba($text-primary, 80%);
+          }
+        }
+      }
+    }
+  }
+}

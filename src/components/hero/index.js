@@ -7,9 +7,9 @@ export default function Hero({ children }) {
   return (
     <section className="hero">
       <Container>
-        <div className="d-flex justify-content-between">
+        <div className="d-flex justify-content-sm-between justify-content-center">
           {children}
-          <Breadcrumb routes={routes} />
+          <Breadcrumb routes={routes} className="d-sm-block d-none"/>
         </div>
       </Container>
     </section>

@@ -1,3 +1,5 @@
+import { Button } from "../";
+
 export default function GameCard({ image, title }) {
   return (
     <div className="game-card">
@@ -5,7 +7,7 @@ export default function GameCard({ image, title }) {
         <div className="game-card-image">
           <img src={image} alt={title} />
           <div className="game-card-overlay">
-            <button className="btn btn-warning">UC satın al</button>
+            <Button title="UC satın al" variant="warning" />
           </div>
         </div>
         <div className="game-card-content">

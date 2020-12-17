@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { Fragment } from "react";
-import { Header, Navbar, Footer, TopBar } from "../";
+import { Header, Navbar, Footer, TopBar, Services } from "../";
 
 export default function Layout({ children }) {
   return (
@@ -19,6 +19,7 @@ export default function Layout({ children }) {
       <Header />
       <Navbar />
       <div className="page-wrapper">{children}</div>
+      <Services />
       <Footer />
     </Fragment>
   );

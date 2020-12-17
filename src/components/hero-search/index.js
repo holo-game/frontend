@@ -1,4 +1,4 @@
-import { Container, Search } from "../";
+import { Container, Search, Button } from "../";
 
 export default function HeroSearch() {
   return (
@@ -9,18 +9,18 @@ export default function HeroSearch() {
         </div>
         <Search />
         <div className="d-flex justify-content-center mt-4">
-          <a href="#" className="btn btn-default btn-sm mx-1">
+          <Button variant="default" size="sm" className="mx-1">
             Pubg mobile
-          </a>
-          <a href="#" className="btn btn-default btn-sm mx-1">
+          </Button>
+          <Button variant="default" size="sm" className="mx-1">
             Clash Royale
-          </a>
-          <a href="#" className="btn btn-default btn-sm mx-1">
+          </Button>
+          <Button variant="default" size="sm" className="mx-1">
             Fortnite
-          </a>
-          <a href="#" className="btn btn-default btn-sm mx-1">
+          </Button>
+          <Button variant="default" size="sm" className="mx-1">
             Point Blank
-          </a>
+          </Button>
         </div>
       </Container>
     </section>

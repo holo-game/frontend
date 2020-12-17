@@ -4,6 +4,7 @@ import cn from "classnames";
 export default function Button({
   as = "button",
   variant = "default",
+  size,
   title,
   children,
   className,
@@ -11,7 +12,10 @@ export default function Button({
 }) {
   const renderButton = React.createElement(
     as,
-    { className: cn("btn", `btn-${variant}`, className), ...props },
+    {
+      className: cn("btn", `btn-${variant}`, size && `btn-${size}`, className),
+      ...props,
+    },
     title ? title : children
   );
   return renderButton;

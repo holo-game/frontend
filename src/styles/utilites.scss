@@ -1,12 +1,30 @@
+.text-primary {
+  color: $text-primary !important;
+}
+.text-secondary {
+  color: $text-secondary !important;
+}
 .text-one {
-  color: $color-one!important;
+  color: $color-one !important;
 }
 .text-two {
-  color: $color-two!important;
+  color: $color-two !important;
 }
 .text-three {
-  color: $color-three!important;
+  color: $color-three !important;
 }
 .text-four {
-  color: $color-four!important;
+  color: $color-four !important;
+}
+.bg-one {
+  background-color: $color-one !important;
+}
+.bg-two {
+  background-color: $color-two !important;
+}
+.bg-three {
+  background-color: $color-three !important;
+}
+.bg-four {
+  background-color: $color-four !important;
 }

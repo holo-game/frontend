@@ -7,6 +7,7 @@ import {
   Row,
   Col,
   GameCard,
+  ServiceCard,
 } from "@/components";
 import { GAMES } from "@/constants";
 
@@ -19,7 +20,7 @@ function Home() {
           title="Oyunlar"
           icon={<i className="far fa-alien-monster text-two"></i>}
         />
-        <Row className="mx-n2 pb-5">
+        <Row className="mx-n2">
           {GAMES.map((game) => (
             <Col
               key={game.id}

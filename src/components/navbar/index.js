@@ -1,4 +1,4 @@
-import { NavLink, Input } from "@/components/";
+import { NavLink, Search } from "@/components/";
 
 export default function Navbar(props) {
   return (
@@ -33,17 +33,7 @@ export default function Navbar(props) {
           </ul>
           <ul className="d-none d-md-flex">
             <li>
-              <Input.Group>
-                <Input.Control
-                  type="text"
-                  invert={true}
-                  addon={true}
-                  placeholder="Hansı oyunu axtarırsınız?"
-                />
-                <Input.Addon variant="primary">
-                  <i className="far fa-search"></i>
-                </Input.Addon>
-              </Input.Group>
+              <Search invert={true} />
             </li>
           </ul>
         </div>

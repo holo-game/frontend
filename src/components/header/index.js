@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Button } from "../";
 
 export default function Header() {
   return (
@@ -14,14 +15,18 @@ export default function Header() {
           </div>
           <ul className="header-nav">
             <li>
-              <a href="#" className="btn btn-default">
-                Qeydiyyatdan Keç
-              </a>
+              <Link href="/">
+                <a>
+                  <Button title="Qeydiyyatdan Keç" variant="default" />
+                </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="btn btn-primary">
-                Daxil Ol
-              </a>
+              <Link href="/">
+                <a>
+                  <Button title="Daxil Ol" variant="primary" />
+                </a>
+              </Link>
             </li>
           </ul>
         </div>

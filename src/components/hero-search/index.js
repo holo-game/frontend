@@ -1,4 +1,4 @@
-import { Container } from "../";
+import { Container, Search } from "../";
 
 export default function HeroSearch() {
   return (
@@ -7,18 +7,7 @@ export default function HeroSearch() {
         <div className="hero-search-title mb-4">
           <h1>Hansı Oyunu Axtarırsınız?</h1>
         </div>
-        <form>
-          <div className="input-group">
-            <input
-              type="text"
-              className="form-control with-addon"
-              placeholder="Oyunun adını daxil edin"
-            />
-            <button className="input-group-addon btn-primary">
-              <i className="far fa-search"></i>
-            </button>
-          </div>
-        </form>
+        <Search />
         <div className="d-flex justify-content-center mt-4">
           <a href="#" className="btn btn-default btn-sm mx-1">
             Pubg mobile

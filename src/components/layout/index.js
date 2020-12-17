@@ -9,6 +9,11 @@ export default function Layout({ children }) {
         <title>Əsas Səhifə | Hologame</title>
         <meta name="description" content="" />
         <meta name="keywords" content="" />
+        <link
+          rel="shortcut icon"
+          href="/images/favicon.ico"
+          type="image/x-icon"
+        />
       </Head>
       <TopBar />
       <Header />

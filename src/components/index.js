@@ -10,6 +10,8 @@ export { default as GameCard } from "./game-card";
 export { default as Footer } from "./footer";
 export { default as TopBar } from "./topbar";
 export { default as Input } from "./input";
+export { default as Button } from "./button";
+export { default as Search } from "./search";
 export { default as Container } from "./grid/container";
 export { default as Row } from "./grid/row";
 export { default as Col } from "./grid/col";

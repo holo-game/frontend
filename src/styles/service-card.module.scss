@@ -1,0 +1,32 @@
+.service-card {
+  display: flex;
+  align-items: flex-start;
+  padding: 15px 15px;
+  transition: 0.2s;
+  cursor: default;
+  .service-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2em;
+    border: 1px solid rgba($bg-secondary, 15%);
+  }
+  .service-card-content {
+    padding-left: 20px;
+    flex: 1;
+    h4 {
+      font-size: 1em;
+      font-weight: 700;
+    }
+    p {
+      margin: 0;
+      font-size: 0.8em;
+    }
+  }
+  &:hover {
+    transform: scale(1.03);
+  }
+}

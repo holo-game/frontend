@@ -2,7 +2,7 @@ import { Container } from "..";
 
 export default function TopBar(props) {
   return (
-    <div className="topbar">
+    <div className="topbar d-none d-md-block">
       <Container>
         <div className="topbar-content">
           <ul className="topbar-nav">

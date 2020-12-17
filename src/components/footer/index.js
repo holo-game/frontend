@@ -13,7 +13,7 @@ export default function Footer() {
             <li>
               <a href="#">Ödəniş Metodları</a>
             </li>
-            <li>
+            <li className="d-none d-sm-block">
               <a href="#">Üzvlük Müqaviləsi</a>
             </li>
           </ul>
@@ -36,7 +36,10 @@ export default function Footer() {
               Copyright 2020 Hologame | Bütün hüquqlar qorunur.
             </p>
             <p className="mb-0 mt-2">
-              Developed by <a href="https://devob.az" target="_blank" className="text-one">Devob Creative</a>
+              Developed by{" "}
+              <a href="https://devob.az" target="_blank" className="text-one">
+                Devob Creative
+              </a>
             </p>
           </div>
         </div>

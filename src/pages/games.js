@@ -1,23 +1,25 @@
 import {
   Layout,
-  HeroSearch,
   Paragraph,
   Container,
   Row,
   Col,
   GameCard,
+  Hero,
+  Button,
 } from "@/components";
 import { GAMES } from "@/constants";
 
-function Home() {
+function Games() {
   return (
     <Layout>
-      <HeroSearch />
-      <Container>
+      <Hero>
         <Paragraph
           title="Oyunlar"
           icon={<i className="far fa-alien-monster text-two"></i>}
         />
+      </Hero>
+      <Container>
         <Row className="mx-n2">
           {GAMES.map((game) => (
             <Col
@@ -28,9 +30,12 @@ function Home() {
             </Col>
           ))}
         </Row>
+        <div className="text-align-center mt-3">
+          <Button title="Daha Çox" />
+        </div>
       </Container>
     </Layout>
   );
 }
 
-export default Home;
+export default Games;

@@ -18,6 +18,10 @@
 @import "./topbar.module.scss";
 @import "./service-card.module.scss";
 @import "./card.module.scss";
+@import "./hero.module.scss";
+@import "./breadcrumb.module.scss";
+@import "./alert.module.scss";
+@import "./bank-card.module.scss";
 
 html,
 body {
@@ -49,6 +53,11 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+*::selection {
+  color: $color-one;
+  background-color: $primary;
 }
 
 .mx-n2 {

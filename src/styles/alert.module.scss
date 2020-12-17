@@ -1,0 +1,19 @@
+.alert {
+  position: relative;
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  padding: 15px;
+  font-weight: 500;
+}
+.alert-warning {
+  color: $text-secondary;
+  background-color: $color-one;
+  border-color: rgba($bg-secondary, 15%);
+}
+.alert-warning-thin {
+  color: rgb(251 249 187 / 65%);
+  background-color: rgb(236 231 164 / 13%);
+  border-color: rgb($bg-primary, 15%);
+  box-shadow: 0 0 15px 0px rgb(255 253 127 / 15%);
+}

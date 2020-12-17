@@ -2,7 +2,7 @@ import Head from "next/head";
 import { Fragment } from "react";
 import { Header, Navbar, Footer, TopBar, Services } from "../";
 
-export default function Layout({ children }) {
+export default function Layout({ children, hideServices }) {
   return (
     <Fragment>
       <Head>
@@ -19,7 +19,7 @@ export default function Layout({ children }) {
       <Header />
       <Navbar />
       <div className="page-wrapper">{children}</div>
-      <Services />
+      {!hideServices && <Services />}
       <Footer />
     </Fragment>
   );

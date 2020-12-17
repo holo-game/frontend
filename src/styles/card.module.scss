@@ -6,6 +6,7 @@
   border-style: solid;
   border-radius: 10px;
   &.card-hoverable {
+    transition: 0.2s;
     &:hover {
       background-color: rgba($bg-primary, 15%);
     }

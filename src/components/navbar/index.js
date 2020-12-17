@@ -23,7 +23,7 @@ export default function Navbar(props) {
               </NavLink>
             </li>
             <li>
-              <NavLink href="/deposit" activeClassName="active">
+              <NavLink href="/banktransfer" activeClassName="active">
                 <a>
                   <i className="far fa-sack text-three"></i>
                   <span>Balans Yüklə</span>

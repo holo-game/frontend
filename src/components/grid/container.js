@@ -1,6 +1,8 @@
-export default function Container({ children, ...props }) {
+import cn from "classnames";
+
+export default function Container({ children, className, ...props }) {
   return (
-    <div className="container" {...props}>
+    <div className={cn("container", className)} {...props}>
       {children}
     </div>
   );

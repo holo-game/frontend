@@ -1,0 +1,38 @@
+.breadcrumb {
+  position: relative;
+  ul {
+    display: flex;
+    align-items: center;
+    margin: 0 -10px;
+    li {
+      position: relative;
+      color: rgba($text-primary, 100%);
+      margin: 0 5px;
+      text-transform: capitalize;
+      &:after {
+        content: "\f054";
+        font-family: "Font Awesome 5 Pro";
+        font-size: 0.7em;
+        font-weight: 900;
+        opacity: 0.4;
+        margin-left: 1em;
+      }
+      a {
+        color: inherit;
+        opacity: 0.6;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+      &:last-child {
+        &::after {
+          display: none;
+        }
+        a {
+          pointer-events: none;
+          opacity: 0.4;
+        }
+      }
+    }
+  }
+}

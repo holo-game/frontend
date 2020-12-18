@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="footer">
@@ -5,16 +7,24 @@ export default function Footer() {
         <div className="footer-content">
           <ul className="footer-nav">
             <li>
-              <a href="#">Haqqımızda</a>
+              <Link href="/pages/about">
+                <a>Haqqımızda</a>
+              </Link>
             </li>
             <li>
-              <a href="#">Əlaqə</a>
+              <Link href="/contact">
+                <a>Əlaqə</a>
+              </Link>
             </li>
             <li>
-              <a href="#">Ödəniş Metodları</a>
+              <Link href="/banktransfer">
+                <a>Ödəniş Metodları</a>
+              </Link>
             </li>
             <li className="d-none d-sm-block">
-              <a href="#">Üzvlük Müqaviləsi</a>
+              <Link href="/pages/agreement">
+                <a>Üzvlük Müqaviləsi</a>
+              </Link>
             </li>
           </ul>
           <ul className="footer-nav my-4">

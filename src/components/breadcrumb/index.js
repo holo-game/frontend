@@ -6,6 +6,8 @@ export default function Breadcrumb({ routes, className, ...props }) {
     home: "Əsas Səhifə",
     games: "Oyunlar",
     banktransfer: "Balans Yüklə",
+    about: "Haqqımızda",
+    contact: "Əlaqə",
   };
   return (
     <div className={cn("breadcrumb", className)} {...props}>

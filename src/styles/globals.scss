@@ -58,6 +58,10 @@ ul {
   padding: 0;
 }
 
+hr {
+  border-color: rgba($bg-primary, 15%);
+}
+
 *::selection {
   color: $color-one;
   background-color: $primary;
@@ -110,6 +114,19 @@ ul {
   &::after {
     background-image: url(/images/cloud-right-side.svg);
     background-position: right;
+  }
+}
+
+.blank-page {
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin-bottom: 1em;
+  }
+  p {
+    color: rgba($text-primary, 70%);
+    font-size: 1.1em;
   }
 }
 

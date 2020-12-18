@@ -28,9 +28,9 @@ export default function Login() {
               </Input.Group>
               <div className="mb-4">
                 <small>
-                  <a href="#" className="text-thin-primary">
-                    Şifrəni unutmusan?
-                  </a>
+                  <Link href="/forgot-password">
+                    <a className="text-thin-primary">Şifrəni unutmusan?</a>
+                  </Link>
                 </small>
               </div>
               <Button type="submit" variant="primary" className="w-100">

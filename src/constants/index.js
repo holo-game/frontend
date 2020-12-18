@@ -1,3 +1,5 @@
+export const API_URI = process.env.API_URI;
+
 export const GAMES = [
   {
     id: 1,

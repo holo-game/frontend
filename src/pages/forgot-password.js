@@ -1,6 +1,7 @@
 import { Layout, Container, Input, Panel, Button } from "@/components";
+import { withAuth } from "../hoc";
 
-export default function ForgotPassword() {
+function ForgotPassword() {
   return (
     <Layout hideServices={true} wrapper="login-wrapper">
       <Container narrow={true} className="py-3 py-sm-5">
@@ -15,7 +16,12 @@ export default function ForgotPassword() {
             <form>
               <Input.Group className="mb-4">
                 <Input.Label>E-Mail ünvanınız</Input.Label>
-                <Input.Control type="email" name="email" invert={true} className="w-100" />
+                <Input.Control
+                  type="email"
+                  name="email"
+                  invert={true}
+                  className="w-100"
+                />
               </Input.Group>
               <Button type="submit" variant="primary" className="w-100">
                 Göndər
@@ -27,3 +33,5 @@ export default function ForgotPassword() {
     </Layout>
   );
 }
+
+export default withAuth(ForgotPassword, true);

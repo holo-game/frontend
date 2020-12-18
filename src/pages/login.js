@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Layout, Container, Input, Panel, Button, Divider } from "@/components";
+import { withAuth } from "../hoc";
 
-export default function Login() {
+function Login() {
   return (
     <Layout hideServices={true} wrapper="login-wrapper">
       <Container narrow={true} className="py-3 py-sm-5">
@@ -47,3 +48,5 @@ export default function Login() {
     </Layout>
   );
 }
+
+export default withAuth(Login, true);

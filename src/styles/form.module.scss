@@ -14,6 +14,14 @@
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
   }
+  .input-group-label {
+    display: block;
+    color: rgba($text-primary, 50%);
+    margin-bottom: 0.75em;
+    font-size: 0.8em;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
 }
 .form-control {
   border-radius: 5px;

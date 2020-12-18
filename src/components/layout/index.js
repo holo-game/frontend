@@ -1,8 +1,9 @@
 import Head from "next/head";
 import { Fragment } from "react";
 import { Header, Navbar, Footer, TopBar, Services } from "../";
+import cn from "classnames";
 
-export default function Layout({ children, hideServices }) {
+export default function Layout({ children, wrapper, hideServices }) {
   return (
     <Fragment>
       <Head>
@@ -18,7 +19,7 @@ export default function Layout({ children, hideServices }) {
       <TopBar />
       <Header />
       <Navbar />
-      <div className="page-wrapper">{children}</div>
+      <div className={cn("page-wrapper", wrapper)}>{children}</div>
       {!hideServices && <Services />}
       <Footer />
     </Fragment>

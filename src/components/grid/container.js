@@ -1,8 +1,11 @@
 import cn from "classnames";
 
-export default function Container({ children, className, ...props }) {
+export default function Container({ children, narrow, className, ...props }) {
   return (
-    <div className={cn("container", className)} {...props}>
+    <div
+      className={cn(narrow ? "container-narrow" : "container", className)}
+      {...props}
+    >
       {children}
     </div>
   );

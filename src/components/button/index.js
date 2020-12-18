@@ -2,8 +2,8 @@ import React from "react";
 import cn from "classnames";
 
 export default function Button({
-  as = "button",
-  variant = "default",
+  as,
+  variant,
   size,
   title,
   children,
@@ -20,3 +20,8 @@ export default function Button({
   );
   return renderButton;
 }
+
+Button.defaultProps = {
+  as: "button",
+  variant: "default",
+};

@@ -15,14 +15,14 @@ export default function Header() {
           </div>
           <ul className="header-nav">
             <li>
-              <Link href="/">
+              <Link href="/register">
                 <a>
                   <Button title="Qeydiyyatdan Keç" variant="default" />
                 </a>
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href="/login">
                 <a>
                   <Button title="Daxil Ol" variant="primary" />
                 </a>

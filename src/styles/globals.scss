@@ -22,6 +22,8 @@
 @import "./breadcrumb.module.scss";
 @import "./alert.module.scss";
 @import "./bank-card.module.scss";
+@import "./panel.module.scss";
+@import "./divider.module.scss";
 
 html,
 body {
@@ -30,6 +32,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Mulish", sans-serif;
+  // -webkit-font-smoothing: antialiased;
 }
 
 * {
@@ -64,8 +67,60 @@ ul {
   margin: 0 -0.5rem !important;
 }
 
+.container-narrow {
+  max-width: 430px;
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.page-wrapper {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.auth-wrapper {
+  background-image: url("/images/login-background.svg");
+  background-blend-mode: overlay;
+  background-color: rgba($bg-secondary, 50%);
+}
+
+.login-wrapper {
+  position: relative;
+  background-color: $primary;
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  &::before {
+    background-image: url(/images/cloud-left-side.svg);
+    background-position: left;
+  }
+  &::after {
+    background-image: url(/images/cloud-right-side.svg);
+    background-position: right;
+  }
+}
+
 @media (max-width: $breakpoint-mobile) {
   body {
     font-size: 14px;
+  }
+  .login-wrapper {
+    &::after,
+    &::before {
+      display: none;
+    }
   }
 }

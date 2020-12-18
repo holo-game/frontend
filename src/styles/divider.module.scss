@@ -1,0 +1,19 @@
+.divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  span {
+    display: block;
+    color: rgba($text-primary, 40%);
+    font-size: 0.9em;
+  }
+  &::before,
+  &::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    margin: 0 15px;
+    background-color: rgba($bg-primary, 15%);
+  }
+}

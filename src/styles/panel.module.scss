@@ -1,0 +1,12 @@
+.panel {
+  position: relative;
+  z-index: 1;
+  .panel-header {
+    padding: 20px;
+    font-size: 1.2em;
+    font-weight: 700;
+  }
+  .panel-body {
+    padding: 20px;
+  }
+}

@@ -1,14 +1,21 @@
-export default function BankCard({ image, bank, cardNumber, accountHolder }) {
+import { Image } from "../";
+
+export default function BankCard({
+  image,
+  bankName,
+  cardNumber,
+  accountHolder,
+}) {
   return (
     <div className="bank-card card card-hoverable">
       <div className="bank-card-image">
-        <img src={image} />
+        <Image src={image} alt={bankName} />
       </div>
       <div className="bank-card-content">
         <ul>
           <li>
             <strong>Bank</strong>
-            <p>{bank}</p>
+            <p>{bankName}</p>
           </li>
           <li>
             <strong>Kart Nömrəsi</strong>

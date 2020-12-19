@@ -20,7 +20,13 @@ function createApolloClient() {
       typePolicies: {
         Query: {
           fields: {
-            allPosts: concatPagination(),
+            games: concatPagination(),
+            // games: {
+            //   keyArgs: false,
+            //   merge(existing = [], incoming) {
+            //     return [...existing, ...incoming];
+            //   },
+            // },
           },
         },
       },

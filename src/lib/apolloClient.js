@@ -14,7 +14,7 @@ function createApolloClient() {
     ssrMode: typeof window === "undefined",
     link: new HttpLink({
       uri: `${API_URI}/graphql`,
-      credentials: "same-origin",
+      credentials: "include",
     }),
     cache: new InMemoryCache({
       typePolicies: {

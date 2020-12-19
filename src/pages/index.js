@@ -39,17 +39,17 @@ function Home(props) {
   );
 }
 
-// export async function getStaticProps() {
-//   const apolloClient = initializeApollo();
+export async function getStaticProps() {
+  const apolloClient = initializeApollo();
 
-//   await apolloClient.query({
-//     query: GAMES,
-//   });
+  await apolloClient.query({
+    query: GAMES,
+  });
 
-//   return addApolloState(apolloClient, {
-//     props: {},
-//     revalidate: 1,
-//   });
-// }
+  return addApolloState(apolloClient, {
+    props: {},
+    revalidate: 1,
+  });
+}
 
 export default Home;

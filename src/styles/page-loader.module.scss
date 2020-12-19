@@ -1,0 +1,39 @@
+.page-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+.loading {
+  position: relative;
+  display: inline-block;
+  &::before {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border-width: 6px;
+    border-style: solid;
+    border-color: $color-one;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    animation: loadingMotion 0.4s infinite forwards linear;
+  }
+  &.loading-lg {
+    &::before {
+      width: 80px;
+      height: 80px;
+    }
+  }
+}
+
+@keyframes loadingMotion {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

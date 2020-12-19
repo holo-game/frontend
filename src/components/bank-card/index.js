@@ -9,7 +9,7 @@ export default function BankCard({
   return (
     <div className="bank-card card card-hoverable">
       <div className="bank-card-image">
-        <Image src={image} alt={bankName} />
+        <Image src={image} alt={bankName} draggable="false" />
       </div>
       <div className="bank-card-content">
         <ul>

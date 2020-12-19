@@ -32,6 +32,10 @@
   width: 36px;
   padding: 0;
 }
+.btn-loading {
+  opacity: 0.8;
+  pointer-events: none;
+}
 .btn-default {
   color: rgba($text-primary, 0.8);
   background-color: rgba($bg-primary, 0.1);

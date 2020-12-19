@@ -1,15 +1,16 @@
 import { ApolloProvider } from "@apollo/client";
-import { Provider } from "../store/";
-import { useApollo } from "../lib/apolloClient";
+import { useApollo } from "@/lib/apolloClient";
+import { sessionWrapper } from "@/hoc";
 import "../styles/globals.scss";
 
 function App({ Component, pageProps }) {
+  // Apollo Client
   const apolloClient = useApollo(pageProps);
+  // Session Wrapper
+  const RenderComponent = sessionWrapper(Component);
   return (
     <ApolloProvider client={apolloClient}>
-      <Provider>
-        <Component {...pageProps} />
-      </Provider>
+      <RenderComponent {...pageProps} />
     </ApolloProvider>
   );
 }

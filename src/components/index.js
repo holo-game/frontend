@@ -20,6 +20,7 @@ export { default as Breadcrumb } from "./breadcrumb";
 export { default as Alert } from "./alert";
 export { default as Divider } from "./divider";
 export { default as Image } from "./image";
+export { default as PageLoader } from "./page-loader";
 export { default as Container } from "./grid/container";
 export { default as Row } from "./grid/row";
 export { default as Col } from "./grid/col";

@@ -39,7 +39,7 @@ function Home(props) {
   );
 }
 
-Home.getInitialProps = async () => {
+export async function getStaticProps() {
   const apolloClient = initializeApollo();
 
   await apolloClient.query({
@@ -50,6 +50,6 @@ Home.getInitialProps = async () => {
     props: {},
     revalidate: 1,
   });
-};
+}
 
 export default Home;

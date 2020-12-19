@@ -17,3 +17,8 @@
   border-color: rgb($bg-primary, 15%);
   box-shadow: 0 0 15px 0px rgb(255 253 127 / 15%);
 }
+.alert-sm {
+  border-radius: 5px;
+  padding: 7px 10px;
+  font-size: 0.9em;
+}

@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 import { concatPagination } from "@apollo/client/utilities";
+import { setContext } from "@apollo/client/link/context";
 import merge from "deepmerge";
 import isEqual from "lodash/isEqual";
 import { API_URI } from "../constants";
@@ -10,12 +11,30 @@ export const APOLLO_STATE_PROP_NAME = "__APOLLO_STATE__";
 let apolloClient;
 
 function createApolloClient() {
+  let token;
+
+  const httpLink = new HttpLink({
+    uri: `${API_URI}/graphql`,
+    credentials: "same-origin",
+  });
+
+  const authLink = setContext((_, { headers }) => {
+    // get the authentication token from local storage if it exists
+    if (typeof window !== "undefined") {
+      token = localStorage.getItem("userToken");
+    }
+    // return the headers to the context so httpLink can read them
+    return {
+      headers: {
+        ...headers,
+        authorization: token ? `Bearer ${token}` : "",
+      },
+    };
+  });
+
   return new ApolloClient({
     ssrMode: typeof window === "undefined",
-    link: new HttpLink({
-      uri: `${API_URI}/graphql`,
-      credentials: "same-origin",
-    }),
+    link: authLink.concat(httpLink),
     cache: new InMemoryCache({
       typePolicies: {
         Query: {
@@ -78,3 +97,5 @@ export function useApollo(pageProps) {
   const store = useMemo(() => initializeApollo(state), [state]);
   return store;
 }
+
+export const useApolloClient = () => apolloClient;

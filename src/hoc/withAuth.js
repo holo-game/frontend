@@ -1,32 +1,36 @@
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { observer } from "mobx-react-lite";
-import { useStore } from "@/store";
+import { MY_DATA } from "@/graphql/queries/auth.query";
+import { useApolloClient } from "@/lib/apolloClient";
 
-export default (Component, without) =>
-  observer((props) => {
-    const router = useRouter();
-    const { userStore } = useStore();
+const withAuth = (Component, without) => (props) => {
+  const router = useRouter();
+  const client = useApolloClient();
 
-    useLayoutEffect(() => {
-      if (userStore.data) {
-        if (without) {
-          router.push("/");
-        }
-      } else {
-        if (!without) {
-          router.push("/login");
-        }
+  const data = client.readQuery({ query: MY_DATA });
+  const user = data?.me;
+
+  useEffect(() => {
+    if (user?.id) {
+      if (without) {
+        router.push("/");
       }
-    });
-
-    const renderComponent = () => {
-      if (userStore.data) {
-        return !without ? <Component {...props} /> : <div />;
-      } else {
-        return without ? <Component {...props} /> : <div />;
+    } else {
+      if (!without) {
+        router.push("/login");
       }
-    };
-
-    return renderComponent();
+    }
   });
+
+  const renderComponent = () => {
+    if (user?.id) {
+      return !without ? <Component {...props} /> : <div />;
+    } else {
+      return without ? <Component {...props} /> : <div />;
+    }
+  };
+
+  return renderComponent();
+};
+
+export default withAuth;

@@ -1,8 +1,34 @@
+import { useState } from "react";
 import Link from "next/link";
-import { Layout, Container, Input, Panel, Button, Divider } from "@/components";
+import {
+  Layout,
+  Container,
+  Input,
+  Panel,
+  Button,
+  Divider,
+  Alert,
+} from "@/components";
 import { withAuth } from "../hoc";
+import { useSignIn } from "../graphql/actions/auth.action";
 
-function Login() {
+function Login({ user }) {
+  const [signIn, { loading, error, data }] = useSignIn();
+
+  const [identifier, setIdentifier] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    signIn({ variables: { identifier, password } });
+  };
+
+  const renderError = error && (
+    <Alert variant="warning" size="sm" className="mb-3">
+      Username və ya şifrə yanlışdır
+    </Alert>
+  );
+
   return (
     <Layout hideServices={true} wrapper="login-wrapper">
       <Container narrow={true} className="py-3 py-sm-5">
@@ -14,16 +40,27 @@ function Login() {
             </small>
           </div>
           <Panel.Body>
-            <form>
+            {renderError}
+            <form onSubmit={onSubmit}>
               <Input.Group className="mb-4">
                 <Input.Label>E-Mail və ya Username</Input.Label>
-                <Input.Control type="text" invert={true} className="w-100" />
+                <Input.Control
+                  type="text"
+                  value={identifier}
+                  onChange={(e) => setIdentifier(e.target.value)}
+                  invert={true}
+                  autoComplete="true"
+                  className="w-100"
+                />
               </Input.Group>
               <Input.Group className="mb-2">
                 <Input.Label>Şifrə</Input.Label>
                 <Input.Control
                   type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   invert={true}
+                  autoComplete="true"
                   className="w-100"
                 />
               </Input.Group>
@@ -34,7 +71,12 @@ function Login() {
                   </Link>
                 </small>
               </div>
-              <Button type="submit" variant="primary" className="w-100">
+              <Button
+                type="submit"
+                variant="primary"
+                className="w-100"
+                loading={loading}
+              >
                 Giriş
               </Button>
               <Divider title="Hesabın yoxdu?" />

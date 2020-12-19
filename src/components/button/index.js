@@ -6,6 +6,7 @@ export default function Button({
   variant,
   size,
   title,
+  loading,
   children,
   className,
   ...props
@@ -13,7 +14,13 @@ export default function Button({
   const renderButton = React.createElement(
     as,
     {
-      className: cn("btn", `btn-${variant}`, size && `btn-${size}`, className),
+      className: cn(
+        "btn",
+        `btn-${variant}`,
+        size && `btn-${size}`,
+        loading && `btn-loading`,
+        className && className
+      ),
       ...props,
     },
     title ? title : children

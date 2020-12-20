@@ -4,14 +4,12 @@ import { withAuth } from "@/hoc";
 function Account({ user }) {
   return (
     <Layout hideServices={true}>
-      <Container>
-        <Hero>
-          <Paragraph
-            title="Hesabım"
-            icon={<i className="far fa-ghost text-six"></i>}
-          />
-        </Hero>
-      </Container>
+      <Hero>
+        <Paragraph
+          title="Hesabım"
+          icon={<i className="far fa-ghost text-six"></i>}
+        />
+      </Hero>
     </Layout>
   );
 }

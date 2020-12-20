@@ -6,6 +6,7 @@ const fragments = {
       id
       username
       email
+      balance
       confirmed
       blocked
       role {

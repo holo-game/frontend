@@ -9,6 +9,7 @@ export const GAMES = gql`
       description
       slug
       content
+      game_money
       thumbnail {
         formats
       }

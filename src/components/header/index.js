@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button } from "../";
 
 export default function Header({ user }) {
+  const balance = parseFloat(user?.balance).toFixed(2);
   return (
     <header className="header">
       <div className="container">
@@ -20,13 +21,17 @@ export default function Header({ user }) {
                   <a>
                     <Button variant="warning">
                       <i className="fas fa-plus fa-xs mr-2"></i>
-                      Balans <strong className="ml-2">{user?.balance} AZN</strong>
+                      Balans <strong className="ml-2">{balance} AZN</strong>
                     </Button>
                   </a>
                 </Link>
               </li>
               <li>
-                <Button variant="default">Sifarişlərim</Button>
+                <Link href="/account/orders">
+                  <a>
+                    <Button variant="default">Sifarişlərim</Button>
+                  </a>
+                </Link>
               </li>
               <li>
                 <Link href="/account">

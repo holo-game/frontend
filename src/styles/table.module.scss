@@ -1,0 +1,37 @@
+.table {
+  position: relative;
+  background-color: $tertiary;
+  border: 1px solid rgba($bg-primary, 10%);
+  border-radius: 10px;
+  overflow: hidden;
+  table {
+    width: 100%;
+    thead {
+      color: rgba($text-primary, 40%);
+      tr {
+        th {
+          padding: 15px;
+        }
+      }
+    }
+    tbody {
+      color: rgba($text-primary, 80%);
+      tr {
+        vertical-align: middle;
+        &:nth-child(odd) {
+          background-color: rgba($bg-primary, 5%);
+        }
+      }
+    }
+    th,
+    td {
+      padding: 10px 15px;
+    }
+    th {
+      font-size: 0.8em;
+    }
+    td {
+      font-size: 0.9em;
+    }
+  }
+}

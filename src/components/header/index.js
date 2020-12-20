@@ -16,10 +16,14 @@ export default function Header({ user }) {
           {user ? (
             <ul className="header-nav">
               <li>
-                <Button variant="warning">
-                  <i className="fas fa-plus fa-xs mr-2"></i>
-                  Balans <strong className="ml-2">0.00 AZN</strong>
-                </Button>
+                <Link href="/banktransfer">
+                  <a>
+                    <Button variant="warning">
+                      <i className="fas fa-plus fa-xs mr-2"></i>
+                      Balans <strong className="ml-2">{user?.balance} AZN</strong>
+                    </Button>
+                  </a>
+                </Link>
               </li>
               <li>
                 <Button variant="default">Sifarişlərim</Button>

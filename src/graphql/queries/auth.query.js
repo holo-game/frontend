@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 const fragments = {
   user: gql`
-    fragment Users on UsersPermissionsMe {
+    fragment User on UsersPermissionsMe {
       id
       username
       email
@@ -22,7 +22,7 @@ export const SIGN_IN = gql`
     login(input: { identifier: $identifier, password: $password }) {
       jwt
       user {
-        ...Users
+        ...User
       }
     }
   }
@@ -36,7 +36,7 @@ export const SIGN_UP = gql`
     ) {
       jwt
       user {
-        ...Users
+        ...User
       }
     }
   }
@@ -46,7 +46,7 @@ export const SIGN_UP = gql`
 export const MY_DATA = gql`
   query {
     me {
-      ...Users
+      ...User
     }
   }
   ${fragments.user}

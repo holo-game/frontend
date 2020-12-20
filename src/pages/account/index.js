@@ -1,22 +1,19 @@
-import { Layout, Container } from "@/components";
+import { Layout, Container, Hero, Paragraph } from "@/components";
 import { withAuth } from "@/hoc";
-import { observer } from "mobx-react-lite";
-import { useStore } from "@/store/";
 
-function Account() {
-  const { userStore } = useStore();
+function Account({ user }) {
   return (
-    <Layout>
+    <Layout hideServices={true}>
       <Container>
-        <button onClick={() => userStore.update({ status: false })}>
-          Çıxış {userStore.data.status ? "var" : "yox"}
-        </button>
-        <button onClick={() => userStore.update({ username: 'eleviven' })}>
-          username change
-        </button>
+        <Hero>
+          <Paragraph
+            title="Hesabım"
+            icon={<i className="far fa-ghost text-six"></i>}
+          />
+        </Hero>
       </Container>
     </Layout>
   );
 }
 
-export default withAuth(observer(Account));
+export default withAuth(Account);

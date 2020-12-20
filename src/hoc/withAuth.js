@@ -1,29 +1,29 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { MY_DATA } from "@/graphql/queries/auth.query";
-import { useApolloClient } from "@/lib/apolloClient";
 
 const withAuth = (Component, without) => (props) => {
   const router = useRouter();
-  const client = useApolloClient();
+  const { user } = props;
 
-  const data = client.readQuery({ query: MY_DATA });
-  const user = data?.me;
+  console.log(user);
 
   useEffect(() => {
-    if (user?.id) {
+    if (user) {
       if (without) {
         router.push("/");
       }
     } else {
       if (!without) {
-        router.push("/login");
+        router.push({
+          pathname: "/login",
+          query: { message: "NOT_AUTHENTICATED" },
+        });
       }
     }
   });
 
   const renderComponent = () => {
-    if (user?.id) {
+    if (user) {
       return !without ? <Component {...props} /> : <div />;
     } else {
       return without ? <Component {...props} /> : <div />;

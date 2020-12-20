@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { Button } from "../";
-import { signOut } from "@/graphql/actions/auth.action";
 
-export default function Header({ user, ...props }) {
+export default function Header({ user }) {
   return (
     <header className="header">
       <div className="container">
@@ -17,11 +16,23 @@ export default function Header({ user, ...props }) {
           {user ? (
             <ul className="header-nav">
               <li>
-                <Button
-                  title="Çıxış"
-                  variant="default"
-                  onClick={() => signOut()}
-                />
+                <Button variant="warning">
+                  <i className="fas fa-plus fa-xs mr-2"></i>
+                  Balans <strong className="ml-2">0.00 AZN</strong>
+                </Button>
+              </li>
+              <li>
+                <Button variant="default">Sifarişlərim</Button>
+              </li>
+              <li>
+                <Link href="/account">
+                  <a>
+                    <Button variant="default">
+                      Salam,
+                      <span className="text-one ml-1">{user.username}</span>
+                    </Button>
+                  </a>
+                </Link>
               </li>
             </ul>
           ) : (

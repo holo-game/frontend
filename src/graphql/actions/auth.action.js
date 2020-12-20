@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation, useQuery, useLazyQuery } from "@apollo/client";
 import { SIGN_IN, SIGN_UP, MY_DATA } from "@/graphql/queries/auth.query";
 import { useApolloClient } from "@/lib/apolloClient";
 
@@ -45,6 +45,7 @@ export const useSignUp = (options) =>
   });
 
 export const useMy = (options) => useQuery(MY_DATA, { ...options });
+export const useLazyMy = (options) => useLazyQuery(MY_DATA, { ...options });
 
 export const signOut = () => {
   const client = useApolloClient();

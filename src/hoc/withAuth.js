@@ -5,8 +5,6 @@ const withAuth = (Component, without) => (props) => {
   const router = useRouter();
   const { user } = props;
 
-  console.log(user);
-
   useEffect(() => {
     if (user) {
       if (without) {

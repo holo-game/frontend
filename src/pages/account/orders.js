@@ -38,7 +38,7 @@ function Orders({ user }) {
                         size="sm"
                       />
                       <div className="pl-3">
-                        <strong className="d-block mb-1">Pubg Mobile</strong>
+                        <strong className="d-block mb-1">{order.game.title}</strong>
                         <small className="text-one">
                           <strong>
                             {order.prices.in_game_value} {order.game.game_money}

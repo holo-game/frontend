@@ -20,6 +20,8 @@
     "next-with-apollo": "^5.1.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-loading-skeleton": "^2.1.1",
+    "react-markdown": "^5.0.3",
     "sass": "^1.30.0",
     "swiper": "^6.4.1"
   }

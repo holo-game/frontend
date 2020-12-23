@@ -1,6 +1,7 @@
 .panel {
   position: relative;
   z-index: 1;
+  overflow: hidden;
   .panel-header {
     padding: 20px;
     font-size: 1.2em;
@@ -8,5 +9,10 @@
   }
   .panel-body {
     padding: 20px;
+  }
+  .panel-footer {
+    padding: 20px;
+    background: rgba($bg-primary, 5%);
+    border-top: 1px solid rgba($bg-primary, 10%);
   }
 }

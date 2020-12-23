@@ -1,28 +1,46 @@
-import { Layout, Hero, Paragraph, Container, Panel } from "@/components";
+import { useRouter } from "next/router";
+import ReactMarkdown from "react-markdown";
+import { usePage } from "@/graphql/actions/page.action";
+import {
+  Layout,
+  Hero,
+  Paragraph,
+  Container,
+  Panel,
+  Loader,
+} from "@/components";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 export default function Page() {
+  const router = useRouter();
+  const { slug } = router.query;
+  const { data: { pageBySlug } = {}, loading, error } = usePage({
+    variables: { slug },
+  });
   return (
     <Layout>
       <Hero>
-        <Paragraph
-          title="Haqqımızda"
-          icon={<i className="far fa-joystick text-six"></i>}
-        />
+        {!loading ? (
+          <Paragraph title={pageBySlug?.title} />
+        ) : (
+          <SkeletonTheme color="#272b3a" highlightColor="#383e52">
+            <Skeleton width="200px" height="36px" />
+          </SkeletonTheme>
+        )}
       </Hero>
       <section className="blank-page">
         <Container>
-          <Panel.Wrapper>
-            <Panel.Body className="pb-2">
-              <h1>Hologame</h1>
-              <p>
-                Hologame 2020 ci ildə fəaliyyətə başlamışdır. Bizim işləmə
-                məqsədimiz, online oyunlara balans artırılmasını istifadəçilər üçün
-                asanlaşırdırmaqdır. Daxilimizdə bir çox məhsul vardır. Pubg
-                Mobile, Mobile Legends, pubg mobile lite, sabotaj, zula, point
-                blank və digər bir çox oyun sistemdə mövcuddur.
-              </p>
-            </Panel.Body>
-          </Panel.Wrapper>
+          {!loading ? (
+            <Panel.Wrapper>
+              <Panel.Body className="pb-2">
+                <ReactMarkdown>{pageBySlug?.content}</ReactMarkdown>
+              </Panel.Body>
+            </Panel.Wrapper>
+          ) : (
+            <SkeletonTheme color="#272b3a" highlightColor="#383e52">
+              <Skeleton count={9} height={20} style={{ lineHeight: 3 }} />
+            </SkeletonTheme>
+          )}
         </Container>
       </section>
     </Layout>

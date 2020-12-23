@@ -10,6 +10,7 @@ export default function Breadcrumb({ routes, className, ...props }) {
     contact: "Əlaqə",
     account: "Hesabım",
     orders: "Sifarişlərim",
+    agreement: "Üzvlük Müqaviləsi",
   };
   return (
     <div className={cn("breadcrumb", className)} {...props}>

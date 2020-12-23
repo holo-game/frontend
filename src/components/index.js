@@ -22,6 +22,7 @@ export { default as Divider } from "./divider";
 export { default as Image } from "./image";
 export { default as Avatar } from "./avatar";
 export { default as PageLoader } from "./page-loader";
+export { default as Error } from "./error";
 export { default as Container } from "./grid/container";
 export { default as Row } from "./grid/row";
 export { default as Col } from "./grid/col";

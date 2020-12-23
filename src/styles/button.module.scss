@@ -9,7 +9,7 @@
   height: 2.5em;
   line-height: 2;
   user-select: none;
-  outline: none!important;
+  outline: none !important;
   white-space: nowrap;
   font-size: 0.9em;
   font-weight: 500;
@@ -42,9 +42,9 @@
   border-color: rgba($bg-primary, 0.1);
 }
 .btn-default:hover {
-  color: $text-secondary!important;
-  background-color: $bg-primary!important;
-  border-color: $bg-primary!important;
+  color: $text-secondary !important;
+  background-color: $bg-primary !important;
+  border-color: $bg-primary !important;
 }
 .btn-primary {
   color: $text-primary;
@@ -65,4 +65,13 @@
   color: $text-secondary;
   background-color: darken($color-one, 30%);
   border-color: rgba($bg-secondary, 10%);
+}
+.btn-danger {
+  color: $text-primary;
+  background-color: $color-two;
+  border-color: lighten($color-two, 10%);
+}
+.btn-danger:hover {
+  color: $text-primary;
+  background-color: darken($color-two, 15%);
 }

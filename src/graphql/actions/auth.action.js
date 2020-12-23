@@ -20,10 +20,15 @@ const userToStorage = (user) => {
   }
 };
 
-export const useSignIn = (options) =>
-  useMutation(SIGN_IN, {
+const userRemoveStorage = () => {
+  localStorage.removeItem("userToken");
+};
+
+export const useSignIn = (options) => {
+  return useMutation(SIGN_IN, {
     ...options,
     onError(err) {
+      userRemoveStorage();
       console.error(err);
     },
     onCompleted(data) {
@@ -31,24 +36,27 @@ export const useSignIn = (options) =>
       userToStorage(user);
     },
   });
+};
 
-export const useSignUp = (options) =>
-  useMutation(SIGN_UP, {
+export const useSignUp = (options) => {
+  return useMutation(SIGN_UP, {
     ...options,
     onError(err) {
       console.error(err);
+      userRemoveStorage();
     },
     onCompleted(data) {
       const user = data?.register;
       userToStorage(user);
     },
   });
+};
 
 export const useMy = (options) => useQuery(MY_DATA, { ...options });
 export const useLazyMy = (options) => useLazyQuery(MY_DATA, { ...options });
 
 export const signOut = () => {
   const client = useApolloClient();
-  localStorage.removeItem("userToken");
+  userRemoveStorage();
   client.cache.reset();
 };

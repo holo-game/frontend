@@ -3,13 +3,9 @@
   background-color: rgba($bg-primary, 10%);
   border: 1px solid rgba($bg-primary, 10%);
   border-radius: 10px;
+  padding: 5px;
   overflow: hidden;
   transition: 0.2s;
-  a {
-    display: block;
-    color: inherit;
-    padding: 5px;
-  }
   .game-card-image {
     position: relative;
     overflow: hidden;

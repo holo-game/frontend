@@ -14,9 +14,11 @@ export const GAMES = gql`
         formats
       }
       game_fields {
+        id
         title
       }
       game_prices {
+        id
         in_game_value
         value
       }

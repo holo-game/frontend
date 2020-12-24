@@ -28,6 +28,7 @@
 @import "./table.module.scss";
 @import "./avatar.module.scss";
 @import "./error.module.scss";
+@import "./modal.module.scss";
 
 html,
 body {
@@ -132,6 +133,11 @@ hr {
     color: rgba($text-primary, 70%);
     font-size: 1.1em;
   }
+}
+
+.game-view {
+  position: relative;
+  padding: 15px;
 }
 
 @media (max-width: $breakpoint-mobile) {

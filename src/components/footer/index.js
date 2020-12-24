@@ -47,7 +47,12 @@ export default function Footer() {
             </p>
             <p className="mb-0 mt-2">
               Developed by{" "}
-              <a href="https://devob.az" target="_blank" className="text-one">
+              <a
+                href="https://devob.az"
+                target="_blank"
+                rel="noopener"
+                className="text-one"
+              >
                 Devob Creative
               </a>
             </p>

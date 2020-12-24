@@ -48,3 +48,12 @@ export const GET_GAME = gql`
   }
   ${fragments.game}
 `;
+
+export const GET_GAME_BY_SLUG = gql`
+  query($slug: String!) {
+    gameBySlug(slug: $slug) {
+      ...GameFragment
+    }
+  }
+  ${fragments.game}
+`;

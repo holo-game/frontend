@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "../";
+import { APP_NAME } from "@/constants";
 
 export default function Header({ user }) {
   const balance = parseFloat(user?.balance).toFixed(2);
@@ -9,8 +11,13 @@ export default function Header({ user }) {
         <div className="header-content">
           <div className="header-brand">
             <Link href="/">
-              <a>
-                <img src="/images/logo.png" />
+              <a aria-label={APP_NAME}>
+                <Image
+                  src="/images/logo.png"
+                  alt={APP_NAME}
+                  width="140px"
+                  height="52px"
+                />
               </a>
             </Link>
           </div>
@@ -48,14 +55,14 @@ export default function Header({ user }) {
             <ul className="header-nav">
               <li>
                 <Link href="/register">
-                  <a>
+                  <a arial-label="Qeydiyyatdan Keç">
                     <Button title="Qeydiyyatdan Keç" variant="default" />
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/login">
-                  <a>
+                  <a arial-label="Daxil Ol">
                     <Button title="Daxil Ol" variant="primary" />
                   </a>
                 </Link>

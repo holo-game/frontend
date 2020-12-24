@@ -5,7 +5,7 @@ export default function ServiceCard({ iconColor, title, icon, paragraph }) {
     <div className="service-card card card-hoverable">
       <div className={cn("service-card-icon", iconColor)}>{icon}</div>
       <div className="service-card-content">
-        <h4>{title}</h4>
+        <h3>{title}</h3>
         <p>{paragraph}</p>
       </div>
     </div>

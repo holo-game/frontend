@@ -3,9 +3,10 @@ import { GameCard, Input, Button, Alert, Col, Row } from "../";
 import GameViewSkeleton from "./game-view-skeleton";
 
 export default function GameView({ game }) {
-  const thumbnail = game?.thumbnail?.formats.small.url;
   const [price, setPrice] = useState(null);
   const [state, setState] = useState([]);
+
+  const thumbnail = game?.thumbnail?.formats.small.url;
   const loading = !game.hasOwnProperty("id");
 
   useEffect(() => {
@@ -13,7 +14,7 @@ export default function GameView({ game }) {
       setPrice(null);
       setState([]);
     };
-  }, []);
+  }, [loading]);
 
   const handleChange = (e) => {
     const { value, dataset: { index, title } = {} } = e.target;
@@ -31,16 +32,16 @@ export default function GameView({ game }) {
             <GameCard image={thumbnail} title={game.title} isOverlay={false} />
           </Col>
           <Col className="col">
-            <div className="d-flex flex-column h-100">
-              <div className="flex-fill">
-                {game.content && (
-                  <Alert variant="warning-thin" size="sm" className="mb-4">
-                    {game.content}
-                  </Alert>
-                )}
-                <div className="d-flex pb-4">
+            <div className="d-flex flex-column justify-content-between h-100">
+              {game.content && (
+                <Alert variant="warning-thin" size="sm">
+                  {game.content}
+                </Alert>
+              )}
+              <div className="py-4">
+                <div className="d-flex flex-wrap pb-1">
                   {game.game_prices?.map((i, index) => (
-                    <div key={index} className="pr-3">
+                    <div key={index} className="pr-3 mb-3">
                       <Button
                         title={`${i.in_game_value} ${game.game_money}`}
                         onClick={() => setPrice({ index, value: i.value })}
@@ -64,7 +65,7 @@ export default function GameView({ game }) {
                   </Input.Group>
                 ))}
               </div>
-              <div className="d-flex justify-content-between pt-4">
+              <div className="d-flex justify-content-between">
                 <Button variant="warning">
                   <i className="far fa-coin mr-3"></i>
                   <span>Satın Al</span>

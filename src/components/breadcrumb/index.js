@@ -24,7 +24,7 @@ export default function Breadcrumb({ routes, className, ...props }) {
           routes.map((route) => (
             <li key={route}>
               <Link href={`/${route}`}>
-                <a>{pages[route]}</a>
+                <a>{pages[route] || route}</a>
               </Link>
             </li>
           ))}

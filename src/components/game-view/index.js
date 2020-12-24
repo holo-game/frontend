@@ -7,7 +7,7 @@ export default function GameView({ game }) {
   const [state, setState] = useState([]);
 
   const thumbnail = game?.thumbnail?.formats.small.url;
-  const loading = !game.hasOwnProperty("id");
+  const loading = !game?.hasOwnProperty("id");
 
   useEffect(() => {
     return () => {

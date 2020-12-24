@@ -5,12 +5,13 @@ export default function ContextualLink({
   href,
   as,
   shallow,
+  scroll,
   children,
   ...props
 }) {
   const { makeContextualHref } = useContextualRouting();
   return (
-    <Link href={makeContextualHref(href)} as={as} {...props}>
+    <Link href={makeContextualHref(href)} as={as} scroll={scroll} {...props}>
       <a>{children}</a>
     </Link>
   );
@@ -18,4 +19,5 @@ export default function ContextualLink({
 
 ContextualLink.defaultProps = {
   shallow: true,
+  scroll: false,
 };

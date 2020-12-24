@@ -13,7 +13,7 @@ import {
   ContextualLink,
 } from "@/components";
 import { useContextualRouting } from "@/lib/contextualRouting";
-import { useGames } from "@/graphql/actions/game.action";
+import { useGames, useGame } from "@/graphql/actions/game.action";
 
 function Games() {
   const { query, push } = useRouter();
@@ -26,6 +26,11 @@ function Games() {
 
   const { data: { games, gamesConnection } = {}, fetchMore } = useGames({
     variables,
+  });
+
+  const { data: { game } = {} } = useGame({
+    variables: { id: query.id },
+    skip: !query?.id,
   });
 
   const loadMore = () => {
@@ -41,8 +46,6 @@ function Games() {
   };
 
   const areLoadMore = gamesConnection?.aggregate.count !== games?.length;
-
-  const selectedGame = games?.find((game) => game.id === query.id);
 
   return (
     <Layout>
@@ -75,7 +78,7 @@ function Games() {
         )}
       </Container>
       <Modal isOpen={query.id} onRequestClose={() => push(returnHref)}>
-        <GameView game={selectedGame} />
+        <GameView game={game} />
       </Modal>
     </Layout>
   );

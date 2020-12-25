@@ -1,38 +1,64 @@
 import { useEffect, useState } from "react";
-import { GameCard, Input, Button, Alert, Col, Row } from "../";
+import { GameCard, Input, Button, Alert, Col, Row } from "@/components";
 import GameViewSkeleton from "./game-view-skeleton";
+import { useCreateOrder } from "@/graphql/actions/order.action";
+import { randomString } from "@/helpers";
 
 export default function GameView({ game }) {
+  // Create order mutation
+  const [createOrder, { data, loading }] = useCreateOrder();
+  // State
   const [price, setPrice] = useState(null);
-  const [state, setState] = useState([]);
-
+  const [fields, setFields] = useState([]);
+  const [error, setError] = useState(null);
+  // Constants
   const thumbnail = game?.thumbnail?.formats.small.url;
-  const loading = !game?.hasOwnProperty("id");
+  const pageLoading = !game?.hasOwnProperty("id");
 
   useEffect(() => {
     return () => {
       setPrice(null);
-      setState([]);
+      setFields([]);
     };
-  }, [loading]);
+  }, [pageLoading]);
 
+  // Methods
   const handleChange = (e) => {
     const { value, dataset: { index, title } = {} } = e.target;
-    setState((prevState) => {
+    setFields((prevState) => {
       prevState[index] = { title, value };
       return [...prevState];
     });
   };
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const order_code = randomString();
+    const prices = {
+      in_game_value: game.game_prices[price?.index]?.in_game_value,
+      value: price?.value,
+    };
+    createOrder({
+      variables: {
+        order_code,
+        prices,
+        fields,
+        gameID: game.id,
+      },
+    });
+  };
+  // Component
   return (
     <div className="game-view">
-      {!loading ? (
+      {!pageLoading ? (
         <Row>
           <Col className="d-md-block d-none col-sm-4">
             <GameCard image={thumbnail} title={game.title} isOverlay={false} />
           </Col>
           <Col className="col">
-            <div className="d-flex flex-column justify-content-between h-100">
+            <form
+              onSubmit={handleSubmit}
+              className="d-flex flex-column justify-content-between h-100"
+            >
               {game.content && (
                 <Alert variant="warning-thin" size="sm">
                   {game.content}
@@ -43,6 +69,7 @@ export default function GameView({ game }) {
                   {game.game_prices?.map((i, index) => (
                     <div key={index} className="pr-3 mb-3">
                       <Button
+                        type="button"
                         title={`${i.in_game_value} ${game.game_money}`}
                         onClick={() => setPrice({ index, value: i.value })}
                         className={index == price?.index ? "btn-primary" : ""}
@@ -66,7 +93,7 @@ export default function GameView({ game }) {
                 ))}
               </div>
               <div className="d-flex justify-content-between">
-                <Button variant="warning">
+                <Button type="submit" variant="warning">
                   <i className="far fa-coin mr-3"></i>
                   <span>Satın Al</span>
                 </Button>
@@ -78,7 +105,7 @@ export default function GameView({ game }) {
                   )}
                 </div>
               </div>
-            </div>
+            </form>
           </Col>
         </Row>
       ) : (

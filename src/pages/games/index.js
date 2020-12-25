@@ -50,7 +50,6 @@ function Games() {
   };
 
   const areLoadMore = gamesConnection?.aggregate.count !== games?.length;
-  console.log(games);
   return (
     <Layout>
       <Hero>

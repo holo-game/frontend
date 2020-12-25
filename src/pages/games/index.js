@@ -11,6 +11,7 @@ import {
   Modal,
   GameView,
   ContextualLink,
+  Error,
 } from "@/components";
 import { useContextualRouting } from "@/lib/contextualRouting";
 import { useGames, useGame } from "@/graphql/actions/game.action";
@@ -20,12 +21,15 @@ function Games() {
   const { returnHref } = useContextualRouting();
   const variables = {
     sort: "published_at:asc",
-    limit: 6,
+    limit: 18,
     start: 0,
+    where: { title_contains: query?.search },
   };
 
   const { data: { games, gamesConnection } = {}, fetchMore } = useGames({
     variables,
+    partialRefetch: true,
+    fetchPolicy: query.search ? "no-cache" : "cache-first",
   });
 
   const { data: { game } = {} } = useGame({
@@ -46,12 +50,12 @@ function Games() {
   };
 
   const areLoadMore = gamesConnection?.aggregate.count !== games?.length;
-
+  console.log(games);
   return (
     <Layout>
       <Hero>
         <Paragraph
-          title="Oyunlar"
+          title={!query.search ? "Oyunlar" : `Axtarış: ${query.search}`}
           icon={<i className="far fa-alien-monster text-two"></i>}
         />
       </Hero>
@@ -71,10 +75,17 @@ function Games() {
             </Col>
           ))}
         </Row>
-        {areLoadMore && (
+        {areLoadMore && !query.search && (
           <div className="text-align-center mt-3">
             <Button title="Daha Çox" onClick={loadMore} />
           </div>
+        )}
+        {games?.length === 0 && (
+          <Error
+            title="Oyun Tapılmadı"
+            image="/images/dreamer.svg"
+            className="pt-5 pb-4"
+          />
         )}
       </Container>
       <Modal isOpen={query.id} onRequestClose={() => push(returnHref)}>

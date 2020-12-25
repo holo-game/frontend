@@ -18,7 +18,9 @@ function Home() {
   const { query, push } = useRouter();
   const { returnHref } = useContextualRouting();
 
-  const { data: { games } = {} } = useGames({ variables: { limit: 12 } });
+  const { data: { games } = {} } = useGames({
+    variables: { limit: 6 },
+  });
   const { data: { game } = {} } = useGame({
     variables: { id: query.id },
     skip: !query?.id,

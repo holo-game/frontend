@@ -2,11 +2,10 @@ import { Layout, Container, Hero, Paragraph, Avatar } from "@/components";
 import { withAuth } from "@/hoc";
 import { useOrders } from "@/graphql/actions/order.action";
 
-function Orders({ user }) {
-  const { data, loading } = useOrders({
-    variables: { id: user?.id },
+function Orders() {
+  const { data: { ordersByMe } = {}, loading } = useOrders({
+    variables: { sort: "id:desc" },
   });
-  const orders = data?.user?.orders;
   const status = (con) => (con ? "Yükləndi" : "Gözləyir");
   return (
     <Layout hideServices={true}>
@@ -28,7 +27,7 @@ function Orders({ user }) {
               </tr>
             </thead>
             <tbody>
-              {orders?.map((order) => (
+              {ordersByMe?.map((order) => (
                 <tr key={order.id}>
                   <td>#{order.order_code}</td>
                   <td>
@@ -38,7 +37,9 @@ function Orders({ user }) {
                         size="sm"
                       />
                       <div className="pl-3">
-                        <strong className="d-block mb-1">{order.game.title}</strong>
+                        <strong className="d-block mb-1">
+                          {order.game.title}
+                        </strong>
                         <small className="text-one">
                           <strong>
                             {order.prices.in_game_value} {order.game.game_money}

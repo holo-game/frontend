@@ -19,7 +19,7 @@ function Home() {
   const { returnHref } = useContextualRouting();
 
   const { data: { games } = {} } = useGames({
-    variables: { limit: 6 },
+    variables: { limit: 18 },
   });
   const { data: { game } = {} } = useGame({
     variables: { id: query.id },
@@ -35,7 +35,7 @@ function Home() {
           icon={<i className="far fa-alien-monster text-two"></i>}
         />
         <Row className="mx-n2">
-          {games?.map((game) => (
+          {games?.slice(0, 6).map((game) => (
             <Col
               key={game.id}
               className="col-lg-2 col-md-3 col-sm-4 col-4 px-2 mb-3"

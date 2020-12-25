@@ -24,6 +24,7 @@ export { default as Divider } from "./divider";
 export { default as Image } from "./image";
 export { default as Avatar } from "./avatar";
 export { default as PageLoader } from "./page-loader";
+export { default as Loading } from "./loading";
 export { default as Error } from "./error";
 export { default as Modal } from "./modal";
 export { default as Container } from "./grid/container";

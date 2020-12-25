@@ -1,5 +1,13 @@
 import { useEffect, useState } from "react";
-import { GameCard, Input, Button, Alert, Col, Row } from "@/components";
+import {
+  GameCard,
+  Input,
+  Button,
+  Alert,
+  Loading,
+  Col,
+  Row,
+} from "@/components";
 import GameViewSkeleton from "./game-view-skeleton";
 import { useCreateOrder } from "@/graphql/actions/order.action";
 import { randomString } from "@/helpers";
@@ -32,6 +40,8 @@ export default function GameView({ game }) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    const error = validation();
+    if (error) return;
     const order_code = randomString();
     const prices = {
       in_game_value: game.game_prices[price?.index]?.in_game_value,
@@ -45,6 +55,16 @@ export default function GameView({ game }) {
         gameID: game.id,
       },
     });
+  };
+  const validation = () => {
+    let error = null;
+    const isNullFields = fields.every((i) => i.value.length === 0);
+    if (isNullFields) {
+      error = "Bütün xanaları doldurmalısınız";
+    } else if (price == null) {
+      error = `${game.game_money} tarifi seçin`;
+    }
+    return error;
   };
   // Component
   return (
@@ -94,7 +114,11 @@ export default function GameView({ game }) {
               </div>
               <div className="d-flex justify-content-between">
                 <Button type="submit" variant="warning">
-                  <i className="far fa-coin mr-3"></i>
+                  {loading ? (
+                    <Loading size="sm" variant="secondary" className="mr-3" />
+                  ) : (
+                    <i className="far fa-coin mr-3"></i>
+                  )}
                   <span>Satın Al</span>
                 </Button>
                 <div>

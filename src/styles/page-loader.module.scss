@@ -16,15 +16,32 @@
     border-radius: 50%;
     border-width: 6px;
     border-style: solid;
-    border-color: $color-one;
-    border-bottom-color: transparent;
-    border-right-color: transparent;
+    border-color: $bg-secondary;
+    border-bottom-color: transparent !important;
+    border-right-color: transparent !important;
     animation: loadingMotion 0.4s infinite forwards linear;
   }
   &.loading-lg {
     &::before {
       width: 80px;
       height: 80px;
+    }
+  }
+  &.loading-sm {
+    &::before {
+      width: 15px;
+      height: 15px;
+      border-width: 2px;
+    }
+  }
+  &.loading-warning {
+    &::before {
+      border-color: $color-one;
+    }
+  }
+  &.loading-secondary {
+    &::before {
+      border-color: $bg-secondary;
     }
   }
 }

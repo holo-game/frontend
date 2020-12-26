@@ -1,5 +1,5 @@
 import { useQuery, useLazyQuery } from "@apollo/client";
-import { GET_PAGES, GET_PAGE } from "../queries/page.query";
+import { GET_PAGES, GET_PAGE } from "@/graphql/queries/page.query";
 
 export const usePages = (options) => useQuery(GET_PAGES, options);
 export const usePage = (options) => useQuery(GET_PAGE, options);

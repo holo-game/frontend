@@ -20,7 +20,7 @@ export default function Search({ invert, ...props }) {
           onChange={(e) => setText(e.target.value)}
           placeholder="Hansı oyunu axtarırsınız?"
         />
-        <Input.Addon type="button" variant="primary" arial-label="search">
+        <Input.Addon type="submit" variant="primary" arial-label="search">
           <i className="far fa-search"></i>
         </Input.Addon>
       </Input.Group>

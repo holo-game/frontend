@@ -18,12 +18,20 @@ export const useCreateOrder = (options) =>
           showCloseButton: true,
           confirmButtonText: "Sifarişlərim",
           showCancelButton: true,
-          cancelButtonText: "Bağla"
+          cancelButtonText: "Bağla",
         }).then((res) => {
           if (res.isConfirmed) {
             Router.push("/account/orders");
           }
         });
       }
+    },
+    onError(err) {
+      requestAlert({
+        icon: "error",
+        title: "Xəta baş verdi!",
+        text: err,
+        confirmButtonText: "Bağla",
+      });
     },
   });

@@ -52,3 +52,9 @@ export const MY_DATA = gql`
   }
   ${fragments.user}
 `;
+
+export const IS_LOGGED_IN = gql`
+  query {
+    isLoggedIn @client
+  }
+`;

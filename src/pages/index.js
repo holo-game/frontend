@@ -46,6 +46,7 @@ function Home() {
                 <GameCard
                   title={game.title}
                   image={game.thumbnail.formats.small.url}
+                  money={game.game_money}
                 />
               </ContextualLink>
             </Col>

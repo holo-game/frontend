@@ -1,4 +1,5 @@
-import { Container } from "..";
+import { Container } from "@/components";
+import { CONTACT } from "@/constants";
 
 export default function TopBar(props) {
   return (
@@ -6,23 +7,17 @@ export default function TopBar(props) {
       <Container>
         <div className="topbar-content">
           <ul className="topbar-nav">
-            <li>
-              Mobil oyunlarda balansınızı artırın
-            </li>
+            <li>Oyunlardakı balansınızı artırın</li>
           </ul>
           <ul className="topbar-nav">
-            <li>
-              <a href="#">
-                <i className="fab fa-telegram-plane"></i>
-                <span>info@hologame.az</span>
-              </a>
-            </li>
-            <li className="text-one">
-              <a href="#">
-                <i className="far fa-phone-alt"></i>
-                <span>051 000 00 00</span>
-              </a>
-            </li>
+            {Object.values(CONTACT).map((i, index) => (
+              <li key={index} className={i.highlight ? "text-one" : ""}>
+                <a href="#">
+                  <i className={i.icon}></i>
+                  <span>{i.value}</span>
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </Container>

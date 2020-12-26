@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SOCIAL, DEVELOPER, APP_NAME } from "@/constants";
 
 export default function Footer() {
   return (
@@ -28,32 +29,28 @@ export default function Footer() {
             </li>
           </ul>
           <ul className="footer-nav my-4">
-            <li>
-              <a href="#" className="btn btn-default">
-                <i className="fab fa-facebook-f mr-3"></i>
-                <span>facebook</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" className="btn btn-default">
-                <i className="fab fa-instagram mr-3"></i>
-                <span>instagram</span>
-              </a>
-            </li>
+            {SOCIAL.map((i) => (
+              <li>
+                <a href={i.url} className="btn btn-default">
+                  <i className={`${i.icon} mr-3`}></i>
+                  <span>{i.title}</span>
+                </a>
+              </li>
+            ))}
           </ul>
           <div className="footer-copyright">
             <p className="my-0">
-              Copyright 2020 Hologame | Bütün hüquqlar qorunur.
+              Copyright 2020 {APP_NAME} | Bütün hüquqlar qorunur.
             </p>
             <p className="mb-0 mt-2">
               Developed by{" "}
               <a
-                href="https://devob.az"
+                href={DEVELOPER.url}
                 target="_blank"
                 rel="noopener"
                 className="text-one"
               >
-                Devob Creative
+                {DEVELOPER.title}
               </a>
             </p>
           </div>

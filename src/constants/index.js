@@ -12,3 +12,43 @@ export const META = {
   url: "https://hologame.az",
   image: "/images/logo.png",
 };
+
+export const CONTACT = {
+  email: {
+    title: "E-Mail",
+    value: "info@hologame.az",
+    icon: "fab fa-telegram-plane",
+    highlight: false,
+  },
+  phone: {
+    title: "Telefon",
+    value: "051 000 00 00",
+    icon: "far fa-phone-alt",
+    highlight: true,
+  },
+};
+
+export const SOCIAL = [
+  {
+    title: "facebook",
+    icon: "fab fa-facebook-f",
+    url: "#",
+  },
+  {
+    title: "instagram",
+    icon: "fab fa-instagram",
+    url: "https://www.instagram.com/hologame.az/",
+  },
+];
+
+export const GAME_TAGS = [
+  "Pubg Mobile",
+  "Free Fire",
+  "Mobile Legends",
+  "Point Blank",
+];
+
+export const DEVELOPER = {
+  title: "Devob Creative",
+  url: "https://devob.az",
+};

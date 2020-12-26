@@ -1,13 +1,13 @@
 import { Button, Image } from "../";
 
-export default function GameCard({ image, title, isOverlay }) {
+export default function GameCard({ image, title, money, isOverlay }) {
   return (
     <div className="game-card">
       <div className="game-card-image">
         <Image src={image} alt={title} />
         {isOverlay && (
           <div className="game-card-overlay">
-            <Button title="UC satın al" variant="warning" />
+            <Button title={`${money} satın al`} variant="warning" />
           </div>
         )}
       </div>
@@ -20,4 +20,5 @@ export default function GameCard({ image, title, isOverlay }) {
 
 GameCard.defaultProps = {
   isOverlay: true,
+  money: "UC",
 };

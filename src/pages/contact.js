@@ -10,15 +10,8 @@ import {
   Col,
   Button,
   Alert,
-  Divider,
 } from "@/components";
-
-{
-  /* <Alert variant="warning-thin mb-4">
-                  Sual, təklif və şikayətlərinizi bizə burdakı form
-                  vasitəsi ilə göndərə bilərsiz.
-                </Alert> */
-}
+import { CONTACT } from "@/constants";
 
 export default function Contact() {
   return (
@@ -33,16 +26,18 @@ export default function Contact() {
       <Container>
         <Row className="flex-sm-row flex-column-reverse">
           <Col className="col-lg-7 col-md-6">
-            <div>
-              <h3 className="text-five">Telefon</h3>
-              <p>+994 51 000 00 00</p>
-              <h3 className="text-five">E-Mail</h3>
-              <p>info@hologame.az</p>
-              <hr />
-              <p className="text-five mt-3">
-                Həftə içi saat 10:00 dan 19:00 a qədər əlaqə saxlaya bilərsiniz
-              </p>
-            </div>
+            <Alert variant="warning-thin" size="sm">
+              Həftə içi saat 10:00 dan 19:00 a qədər əlaqə saxlaya bilərsiniz
+            </Alert>
+            <hr className="my-4" />
+            <ul>
+              {Object.values(CONTACT).map((i, index) => (
+                <li key={index} className="mb-3">
+                  <h3 className="text-five">{i.title}</h3>
+                  <p>{i.value}</p>
+                </li>
+              ))}
+            </ul>
           </Col>
           <Col className="col-lg-5 col-md-6">
             <Panel.Wrapper className="mb-4 mb-sm-0">

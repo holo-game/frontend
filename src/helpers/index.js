@@ -1,6 +1,8 @@
+import { makeVar } from "@apollo/client";
 import cryptoRandomString from "crypto-random-string";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+
 const MySwal = withReactContent(Swal);
 
 export const randomString = () => {
@@ -27,3 +29,5 @@ export const requestAlert = ({
     showCloseButton,
   });
 };
+
+export const isLoggedInVar = makeVar(false);

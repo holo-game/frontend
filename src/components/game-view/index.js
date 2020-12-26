@@ -11,6 +11,7 @@ import {
 import GameViewSkeleton from "./game-view-skeleton";
 import { useCreateOrder } from "@/graphql/actions/order.action";
 import { useLoggedIn } from "@/graphql/actions/auth.action";
+import { randomString } from "@/helpers";
 
 export default function GameView({ game }) {
   // User exists state

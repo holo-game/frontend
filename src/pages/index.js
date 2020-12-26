@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import {
   Layout,
+  Head,
   HeroSearch,
   Paragraph,
   GameCard,
@@ -28,6 +29,7 @@ function Home() {
 
   return (
     <Layout>
+      <Head />
       <HeroSearch />
       <Container>
         <Paragraph

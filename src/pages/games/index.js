@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import {
   Layout,
+  Head,
   Paragraph,
   Container,
   Row,
@@ -52,6 +53,7 @@ function Games() {
   const areLoadMore = gamesConnection?.aggregate.count !== games?.length;
   return (
     <Layout>
+      <Head title="Oyunlar" />
       <Hero>
         <Paragraph
           title={!query.search ? "Oyunlar" : `Axtarış: ${query.search}`}

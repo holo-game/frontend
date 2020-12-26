@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import {
   Layout,
+  Head,
   Hero,
   Paragraph,
   GameView,
@@ -20,10 +21,21 @@ export default function Game() {
 
   const game = gameBySlug;
 
+  const meta = {
+    title: game?.title,
+    description: game?.description,
+    keywords: game?.keywords,
+    image: game?.thumbnail?.formats.small.url,
+  };
+
   return (
     <Layout>
+      <Head {...meta} />
       <Hero>
-        <Paragraph title={game?.title} icon={<i className="far fa-joystick text-six"></i>} />
+        <Paragraph
+          title={game?.title}
+          icon={<i className="far fa-joystick text-six"></i>}
+        />
       </Hero>
       <Container>
         <Row>

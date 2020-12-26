@@ -1,5 +1,6 @@
 import {
   Layout,
+  Head,
   Hero,
   Paragraph,
   Container,
@@ -22,6 +23,7 @@ import {
 export default function Contact() {
   return (
     <Layout>
+      <Head title="Əlaqə" />
       <Hero>
         <Paragraph
           title="Əlaqə"
@@ -37,7 +39,9 @@ export default function Contact() {
               <h3 className="text-five">E-Mail</h3>
               <p>info@hologame.az</p>
               <hr />
-              <p className="text-five mt-3">Həftə içi saat 10:00 dan 19:00 a qədər əlaqə saxlaya bilərsiniz</p>
+              <p className="text-five mt-3">
+                Həftə içi saat 10:00 dan 19:00 a qədər əlaqə saxlaya bilərsiniz
+              </p>
             </div>
           </Col>
           <Col className="col-lg-5 col-md-6">

@@ -1,5 +1,6 @@
 import {
   Layout,
+  Head,
   Paragraph,
   Container,
   Row,
@@ -14,6 +15,7 @@ function BankTransfer() {
   const { data: { bankAccounts } = {}, loading, error } = useBanks();
   return (
     <Layout hideServices={true}>
+      <Head title="Balans Yüklə" />
       <Hero>
         <Paragraph
           title="Balans Yüklə"

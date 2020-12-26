@@ -1,6 +1,7 @@
 import { signOut } from "@/graphql/actions/auth.action";
 import {
   Layout,
+  Head,
   Container,
   Hero,
   Paragraph,
@@ -14,6 +15,7 @@ import { withAuth } from "@/hoc";
 function Account({ user }) {
   return (
     <Layout hideServices={true}>
+      <Head title="Hesabım" />
       <Hero>
         <Paragraph
           title="Hesabım"

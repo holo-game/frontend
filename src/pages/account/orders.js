@@ -1,4 +1,4 @@
-import { Layout, Container, Hero, Paragraph, Avatar } from "@/components";
+import { Layout, Head, Container, Hero, Paragraph, Avatar } from "@/components";
 import { withAuth } from "@/hoc";
 import { useOrders } from "@/graphql/actions/order.action";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
@@ -10,6 +10,7 @@ function Orders() {
   const status = (con) => (con ? "Yükləndi" : "Gözləyir");
   return (
     <Layout hideServices={true}>
+      <Head title="Sifarişlərim" />
       <Hero>
         <Paragraph
           title="Sifarişlərim"

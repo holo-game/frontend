@@ -2,7 +2,15 @@ import { Fragment, useEffect } from "react";
 import { useRouter } from "next/router";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import ReactMarkdown from "react-markdown";
-import { Layout, Hero, Paragraph, Container, Panel, Error } from "@/components";
+import {
+  Layout,
+  Head,
+  Hero,
+  Paragraph,
+  Container,
+  Panel,
+  Error,
+} from "@/components";
 import { useLazyPage } from "@/graphql/actions/page.action";
 
 export default function Page() {
@@ -20,8 +28,15 @@ export default function Page() {
     getPageData();
   }, [pageBySlug]);
 
+  const meta = {
+    title: pageBySlug?.title,
+    description: pageBySlug?.description,
+    keywords: pageBySlug?.keywords,
+  };
+
   return (
     <Layout>
+      <Head {...meta} />
       {!error ? (
         <Fragment>
           <Hero>

@@ -9,6 +9,9 @@ module.exports = {
     includePaths: [path.join(__dirname, "src", "styles")],
   },
   env: {
-    API_URI: "http://localhost:1337",
+    API_URI:
+      process.env.NODE_ENV !== "production"
+        ? "http://localhost:1337"
+        : "http://localhost:1337",
   },
 };

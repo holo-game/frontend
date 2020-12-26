@@ -28,11 +28,11 @@ function Account({ user }) {
                 <Panel.Body>
                   <div className="mb-3">
                     <label className="d-block">Username</label>
-                    <strong>{user.username}</strong>
+                    <strong>{user?.username}</strong>
                   </div>
                   <div>
                     <label className="d-block">E-Mail</label>
-                    <strong>{user.email}</strong>
+                    <strong>{user?.email}</strong>
                   </div>
                 </Panel.Body>
                 <Panel.Footer>

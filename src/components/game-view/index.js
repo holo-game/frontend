@@ -10,11 +10,13 @@ import {
 } from "@/components";
 import GameViewSkeleton from "./game-view-skeleton";
 import { useCreateOrder } from "@/graphql/actions/order.action";
-import { randomString } from "@/helpers";
+import { useLoggedIn } from "@/graphql/actions/auth.action";
 
 export default function GameView({ game }) {
+  // User exists state
+  const { data: { isLoggedIn } = {} } = useLoggedIn();
   // Create order mutation
-  const [createOrder, { data, loading }] = useCreateOrder();
+  const [createOrder, { loading }] = useCreateOrder();
   // State
   const [price, setPrice] = useState(null);
   const [fields, setFields] = useState([]);
@@ -25,8 +27,7 @@ export default function GameView({ game }) {
 
   useEffect(() => {
     return () => {
-      setPrice(null);
-      setFields([]);
+      clearState();
     };
   }, [pageLoading]);
 
@@ -37,6 +38,7 @@ export default function GameView({ game }) {
       prevState[index] = { title, value };
       return [...prevState];
     });
+    setError(null);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,14 +58,23 @@ export default function GameView({ game }) {
       },
     });
   };
+  const clearState = () => {
+    setPrice(null);
+    setFields([]);
+    setError(null);
+  };
+  // Form Validation
   const validation = () => {
     let error = null;
     const isNullFields = fields.every((i) => i.value.length === 0);
-    if (isNullFields) {
+    if (!isLoggedIn) {
+      error = `Hesabınıza <a href="/login"><u>daxil olun</u></a> və ya <a href="/register"><u>qeydiyyatdan keçin</u></a>`;
+    } else if (isNullFields) {
       error = "Bütün xanaları doldurmalısınız";
     } else if (price == null) {
       error = `${game.game_money} tarifi seçin`;
     }
+    setError(error);
     return error;
   };
   // Component
@@ -80,18 +91,29 @@ export default function GameView({ game }) {
               className="d-flex flex-column justify-content-between h-100"
             >
               {game.content && (
-                <Alert variant="warning-thin" size="sm">
-                  {game.content}
+                <Alert
+                  variant={error ? "danger-thin" : "warning-thin"}
+                  size="sm"
+                >
+                  <span
+                    dangerouslySetInnerHTML={{ __html: error || game.content }}
+                  />
                 </Alert>
               )}
               <div className="py-4">
+                <Input.Group>
+                  <Input.Label>{game.game_money} Seçin</Input.Label>
+                </Input.Group>
                 <div className="d-flex flex-wrap pb-1">
                   {game.game_prices?.map((i, index) => (
                     <div key={index} className="pr-3 mb-3">
                       <Button
                         type="button"
                         title={`${i.in_game_value} ${game.game_money}`}
-                        onClick={() => setPrice({ index, value: i.value })}
+                        onClick={() => {
+                          setPrice({ index, value: i.value });
+                          setError();
+                        }}
                         className={index == price?.index ? "btn-primary" : ""}
                       />
                     </div>

@@ -5,14 +5,13 @@ import { PageLoader } from "@/components";
 import "../styles/globals.scss";
 
 function App({ Component, pageProps }) {
-  const { data, loading } = useMy();
-  const user = data?.me;
+  const { data: { me } = {}, loading } = useMy();
 
   const renderComponent = () => {
     if (loading) {
       return <PageLoader />;
     } else {
-      return <Component {...pageProps} user={user} />;
+      return <Component {...pageProps} user={me} />;
     }
   };
 

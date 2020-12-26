@@ -1,15 +1,14 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { useMy } from "../graphql/actions/auth.action";
+import { useLoggedIn } from "../graphql/actions/auth.action";
 
 const withAuth = (Component, without) => (props) => {
   const router = useRouter();
 
-  const { data: { me } = {} } = useMy();
-  const user = me;
+  const { data: { isLoggedIn } = {} } = useLoggedIn();
 
   useEffect(() => {
-    if (user) {
+    if (isLoggedIn) {
       if (without) {
         router.push("/");
       }
@@ -24,7 +23,7 @@ const withAuth = (Component, without) => (props) => {
   });
 
   const renderComponent = () => {
-    if (user) {
+    if (isLoggedIn) {
       return !without ? <Component {...props} /> : <div />;
     } else {
       return without ? <Component {...props} /> : <div />;

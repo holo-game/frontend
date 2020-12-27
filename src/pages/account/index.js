@@ -12,7 +12,7 @@ import {
 } from "@/components";
 import { withAuth } from "@/hoc";
 
-function Account({ user }) {
+function Account({ user, apolloClient }) {
   return (
     <Layout hideServices={true}>
       <Head title="Hesabım" />
@@ -41,7 +41,7 @@ function Account({ user }) {
                   <Button
                     title="Çıxış"
                     variant="danger"
-                    onClick={() => signOut()}
+                    onClick={() => signOut(apolloClient)}
                   />
                 </Panel.Footer>
               </Panel.Wrapper>

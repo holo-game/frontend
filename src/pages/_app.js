@@ -4,17 +4,15 @@ import { useMy } from "@/graphql/actions/auth.action";
 import { PageLoader } from "@/components";
 import "../styles/globals.scss";
 
-function App({ Component, pageProps }) {
+function App({ Component, pageProps, apollo }) {
   const { data: { me } = {}, loading } = useMy();
-
   const renderComponent = () => {
     if (loading) {
       return <PageLoader />;
     } else {
-      return <Component {...pageProps} user={me} />;
+      return <Component user={me} apolloClient={apollo} {...pageProps} />;
     }
   };
-
   return renderComponent();
 }
 

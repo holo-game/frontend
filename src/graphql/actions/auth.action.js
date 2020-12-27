@@ -5,14 +5,12 @@ import {
   MY_DATA,
   IS_LOGGED_IN,
 } from "@/graphql/queries/auth.query";
-import { useApolloClient } from "@/lib/apolloClient";
 import { isLoggedInVar } from "@/helpers";
+import Cookies from "js-cookie";
 
-const userToStorage = (user) => {
+const userToStorage = (client, user) => {
   const userToken = user?.jwt;
   const userData = user?.user;
-
-  const client = useApolloClient();
 
   client.writeQuery({
     query: MY_DATA,
@@ -22,13 +20,16 @@ const userToStorage = (user) => {
   });
 
   if (userToken) {
+    Cookies.set("userToken", userToken);
     localStorage.setItem("userToken", userToken);
     isLoggedInVar(true);
   }
 };
 
 const userRemoveStorage = () => {
+  Cookies.set("userToken", "");
   localStorage.removeItem("userToken");
+  isLoggedInVar(false);
 };
 
 export const useSignIn = (options) => {
@@ -38,9 +39,9 @@ export const useSignIn = (options) => {
       userRemoveStorage();
       console.error(err);
     },
-    onCompleted(data) {
+    update(cache, { data }) {
       const user = data?.login;
-      userToStorage(user);
+      userToStorage(cache, user);
     },
   });
 };
@@ -52,9 +53,9 @@ export const useSignUp = (options) => {
       console.error(err);
       userRemoveStorage();
     },
-    onCompleted(data) {
+    update(cache, { data }) {
       const user = data?.register;
-      userToStorage(user);
+      userToStorage(cache, user);
     },
   });
 };
@@ -70,17 +71,9 @@ export const useMy = (options) =>
   });
 export const useLazyMy = (options) => useLazyQuery(MY_DATA, { ...options });
 
-export const signOut = () => {
-  const client = useApolloClient();
-  userRemoveStorage();
-  isLoggedInVar(false);
-  client.cache.reset();
-};
-
 export const useLoggedIn = (options) => useQuery(IS_LOGGED_IN, options);
 
-export const isLoggedIn = () => {
-  const client = useApolloClient();
-  const { isLoggedIn } = client.readQuery({ query: IS_LOGGED_IN });
-  return isLoggedIn;
+export const signOut = (apolloClient) => {
+  userRemoveStorage();
+  apolloClient.writeQuery({ query: MY_DATA, data: { me: null } });
 };

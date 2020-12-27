@@ -43,7 +43,6 @@ function Register() {
     e.preventDefault();
     const err = validation();
     if (!err.message) {
-      console.log(userState);
       signUp({
         variables: { ...userState },
       });

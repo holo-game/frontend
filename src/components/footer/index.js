@@ -29,8 +29,8 @@ export default function Footer() {
             </li>
           </ul>
           <ul className="footer-nav my-4">
-            {SOCIAL.map((i) => (
-              <li>
+            {SOCIAL.map((i, index) => (
+              <li key={index}>
                 <a href={i.url} className="btn btn-default">
                   <i className={`${i.icon} mr-3`}></i>
                   <span>{i.title}</span>

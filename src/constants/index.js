@@ -13,6 +13,27 @@ export const META = {
   image: "/images/logo.png",
 };
 
+export const NAVIGATION_LIST = [
+  {
+    title: "Əsas Səhifə",
+    icon: "far fa-home-alt",
+    color: "text-one",
+    path: "/",
+  },
+  {
+    title: "Oyunlar",
+    icon: "far fa-alien-monster",
+    color: "text-two",
+    path: "/games",
+  },
+  {
+    title: "Balans Yüklə",
+    icon: "far fa-sack",
+    color: "text-three",
+    path: "/banktransfer",
+  },
+];
+
 export const CONTACT = {
   email: {
     title: "E-Mail",

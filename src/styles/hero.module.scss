@@ -5,3 +5,9 @@
     margin-bottom: 0 !important;
   }
 }
+
+@media (max-width: $breakpoint-mobile) {
+  .hero {
+    padding: 2rem 0;
+  }
+}

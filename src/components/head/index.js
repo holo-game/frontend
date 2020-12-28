@@ -14,11 +14,6 @@ export default function MyHead({ title, description, keywords, url, image }) {
       <meta property="og:image" content={`${API_URI}${image}`} />
       <meta property="twitter:title" content={title} />
       <meta property="twitter:description" content={description} />
-      <link
-        rel="shortcut icon"
-        href="/images/favicon.ico"
-        type="image/x-icon"
-      />
     </Head>
   );
 }

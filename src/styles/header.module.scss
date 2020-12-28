@@ -1,5 +1,6 @@
 .header {
   position: relative;
+  z-index: 9;
   padding: 15px 0;
   .header-content {
     display: flex;
@@ -23,6 +24,69 @@
       margin: 0 -7.5px;
       li {
         padding: 0 7.5px;
+      }
+    }
+    .header-collapse {
+      margin: 0;
+      .header-collapse-btn {
+        display: none;
+        margin: 0;
+      }
+      #collapse-trigger {
+        display: none;
+      }
+    }
+  }
+}
+@media (max-width: $breakpoint-mobile) {
+  .header {
+    background-color: $tertiary;
+    padding: 10px 0;
+    .header-content {
+      .header-brand {
+        width: 100px;
+      }
+      .header-nav {
+        margin: 0 -5px;
+        li {
+          padding: 0 5px;
+        }
+      }
+      .header-collapse {
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+        .header-collapse-btn {
+          display: inherit;
+        }
+        .header-nav {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          flex-direction: column;
+          background-color: $tertiary;
+          padding: 15px;
+          padding-top: 0;
+          margin: 0;
+          li {
+            width: 100%;
+            padding: 0;
+            margin-top: 10px;
+            .btn {
+              width: 100%;
+              height: 2.9em;
+            }
+          }
+        }
+        #collapse-trigger {
+          & + .header-nav {
+            display: none;
+          }
+          &:checked + .header-nav {
+            display: block;
+          }
+        }
       }
     }
   }

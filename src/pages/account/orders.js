@@ -19,7 +19,7 @@ function Orders() {
       </Hero>
       <Container>
         {!loading ? (
-          <div className="table mb-5">
+          <div className="table mb-3 mb-sm-5">
             <table>
               <thead>
                 <tr>

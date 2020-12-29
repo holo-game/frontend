@@ -15,7 +15,7 @@ export const requestAlert = ({
   text,
   icon,
   cancelButtonText,
-  confirmButtonText,
+  confirmButtonText = "Bağla",
   showCancelButton,
   showCloseButton,
 }) => {

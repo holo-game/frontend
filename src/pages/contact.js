@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Layout,
   Head,
@@ -10,10 +11,62 @@ import {
   Col,
   Button,
   Alert,
+  Loading,
 } from "@/components";
-import { CONTACT } from "@/constants";
+import { useCreateMessage } from "@/graphql/actions/message.action.js";
+import { requestAlert } from "@/helpers";
+import { CONTACT, REGEX } from "@/constants";
+
+const initialState = {
+  fullname: "",
+  email: "",
+  phone: "",
+  content: "",
+};
 
 export default function Contact() {
+  const [createMessage, { loading }] = useCreateMessage();
+  const [state, setState] = useState({ ...initialState });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setState((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const validation = () => {
+    let errors = null;
+    if (state.fullname.length < 3) {
+      errors = "Adınız minimum 3 simvol olmalıdır";
+    } else if (!REGEX.email.test(state.email)) {
+      errors = "Email düzgün daxil edilməyib";
+    } else if (!state.phone || state.phone.length >= 15) {
+      errors = "Telefon düzgün daxil edilməyib";
+    } else if (state.content.trim().length < 10) {
+      errors = "Mesaj mətni çox qısadır";
+    }
+    return errors;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const errors = validation();
+    if (errors) return requestAlert({ icon: "warning", text: errors });
+    try {
+      await createMessage({ variables: { ...state } });
+      setState({ ...initialState });
+      requestAlert({
+        icon: "success",
+        title: "Mesajınız göndərildi",
+        text: "Qısa zamanda sizinlə əlaqə saxlanılacaq",
+      });
+    } catch (err) {
+      requestAlert({ icon: "error", text: err });
+    }
+  };
+
   return (
     <Layout>
       <Head title="Əlaqə" />
@@ -42,42 +95,55 @@ export default function Contact() {
           <Col className="col-lg-5 col-md-6">
             <Panel.Wrapper className="mb-4 mb-sm-0">
               <Panel.Body>
-                <Input.Group className="mb-4">
-                  <Input.Label>Ad Soyad</Input.Label>
-                  <Input.Control
-                    type="text"
-                    name="fullname"
-                    invert={true}
-                    className="w-100"
-                  />
-                </Input.Group>
-                <Input.Group className="mb-4">
-                  <Input.Label>E-Mail ünvanınız</Input.Label>
-                  <Input.Control
-                    type="email"
-                    name="email"
-                    invert={true}
-                    className="w-100"
-                  />
-                </Input.Group>
-                <Input.Group className="mb-4">
-                  <Input.Label>Telefon nömrəniz</Input.Label>
-                  <Input.Control
-                    type="phone"
-                    name="phone"
-                    invert={true}
-                    className="w-100"
-                  />
-                </Input.Group>
-                <Input.Group className="mb-3">
-                  <Input.Label>Mesajınız</Input.Label>
-                  <textarea
-                    className="form-control invert w-100"
-                    rows="5"
-                    columns="3"
-                  />
-                </Input.Group>
-                <Button title="Göndər" variant="primary" className="w-100" />
+                <form onSubmit={handleSubmit}>
+                  <Input.Group className="mb-4">
+                    <Input.Label>Ad Soyad</Input.Label>
+                    <Input.Control
+                      type="text"
+                      name="fullname"
+                      value={state.fullname}
+                      invert={true}
+                      className="w-100"
+                      onChange={handleChange}
+                    />
+                  </Input.Group>
+                  <Input.Group className="mb-4">
+                    <Input.Label>E-Mail ünvanınız</Input.Label>
+                    <Input.Control
+                      type="email"
+                      name="email"
+                      value={state.email}
+                      invert={true}
+                      className="w-100"
+                      onChange={handleChange}
+                    />
+                  </Input.Group>
+                  <Input.Group className="mb-4">
+                    <Input.Label>Telefon nömrəniz</Input.Label>
+                    <Input.Control
+                      type="phone"
+                      name="phone"
+                      value={state.phone}
+                      invert={true}
+                      className="w-100"
+                      onChange={handleChange}
+                    />
+                  </Input.Group>
+                  <Input.Group className="mb-3">
+                    <Input.Label>Mesajınız</Input.Label>
+                    <textarea
+                      name="content"
+                      value={state.content}
+                      className="form-control invert w-100"
+                      rows="5"
+                      columns="3"
+                      onChange={handleChange}
+                    />
+                  </Input.Group>
+                  <Button type="submit" variant="primary" className="w-100">
+                    {loading && <Loading size="sm" className="mr-3" />} Göndər
+                  </Button>
+                </form>
               </Panel.Body>
             </Panel.Wrapper>
           </Col>

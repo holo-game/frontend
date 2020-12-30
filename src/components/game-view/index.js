@@ -8,7 +8,7 @@ import {
   Col,
   Row,
 } from "@/components";
-import GameViewSkeleton from "./game-view-skeleton";
+import { GameViewSkeleton } from "@/components/skeletons";
 import { useCreateOrder } from "@/graphql/actions/order.action";
 import { useLoggedIn } from "@/graphql/actions/auth.action";
 import { randomString } from "@/helpers";

@@ -1,4 +1,4 @@
-import { Row, Col } from "../";
+import { Row, Col } from "..";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 export default function GameViewSkeleton() {

@@ -4,6 +4,7 @@ import {
   SIGN_UP,
   MY_DATA,
   IS_LOGGED_IN,
+  FORGOT_PASSWORD,
 } from "@/graphql/queries/auth.query";
 import { isLoggedInVar } from "@/helpers";
 import Cookies from "js-cookie";
@@ -59,6 +60,9 @@ export const useSignUp = (options) => {
     },
   });
 };
+
+export const useForgotPassword = (options) =>
+  useMutation(FORGOT_PASSWORD, options);
 
 export const useMy = (options) =>
   useQuery(MY_DATA, {

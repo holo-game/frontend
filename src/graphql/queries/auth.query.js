@@ -44,6 +44,14 @@ export const SIGN_UP = gql`
   ${fragments.user}
 `;
 
+export const FORGOT_PASSWORD = gql`
+  mutation($email: String!) {
+    forgotPassword(email: $email) {
+      ok
+    }
+  }
+`;
+
 export const MY_DATA = gql`
   query {
     me {

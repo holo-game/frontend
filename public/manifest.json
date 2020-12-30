@@ -3,7 +3,7 @@
   "short_name": "Hologame",
   "theme_color": "#272b3a",
   "background_color": "#101323",
-  "display": "fullscreen",
+  "display": "standalone",
   "orientation": "portrait",
   "scope": "/",
   "start_url": "/",

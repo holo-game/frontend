@@ -19,6 +19,7 @@
     "mobx": "^6.0.4",
     "mobx-react-lite": "^3.1.6",
     "next": "10.0.3",
+    "next-pwa": "^5.0.1",
     "next-with-apollo": "^5.1.0",
     "qs-stringify": "^1.2.1",
     "react": "17.0.1",

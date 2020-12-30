@@ -31,7 +31,7 @@ export default function Footer() {
           <ul className="footer-nav my-4">
             {SOCIAL.map((i, index) => (
               <li key={index}>
-                <a href={i.url} className="btn btn-default">
+                <a href={i.url} target="_blank" rel="noopener" className="btn btn-default">
                   <i className={`${i.icon} mr-3`}></i>
                   <span>{i.title}</span>
                 </a>
@@ -43,7 +43,14 @@ export default function Footer() {
               Copyright 2020 {APP_NAME} | Bütün hüquqlar qorunur.
             </p>
             <p className="mb-0 mt-2">
-              Developed by{" "}
+              Developed by
+              <img
+                src="/images/devob-health.png"
+                alt="devob"
+                width="20"
+                height="20"
+                className="mx-2"
+              />
               <a
                 href={DEVELOPER.url}
                 target="_blank"

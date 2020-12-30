@@ -14,7 +14,7 @@ module.exports = withPWA({
     API_URI:
       process.env.NODE_ENV !== "production"
         ? "http://localhost:1337"
-        : "https://32960a81b9b1.ngrok.io",
+        : "http://localhost:1337",
   },
   pwa: {
     disable: process.env.NODE_ENV === "development",

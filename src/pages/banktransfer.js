@@ -9,10 +9,11 @@ import {
   Alert,
   BankCard,
 } from "@/components";
+import { BankListSkeleton } from "../components/skeletons";
 import { useBanks } from "@/graphql/actions/bank.action";
 
 function BankTransfer() {
-  const { data: { bankAccounts } = {}, loading, error } = useBanks();
+  const { data: { bankAccounts } = {}, loading } = useBanks();
   return (
     <Layout hideServices={true}>
       <Head title="Balans Yüklə" />
@@ -28,6 +29,7 @@ function BankTransfer() {
           vasitəsiylə ödəniş edib, çekin şəklini canlı dəstək xidmətinə
           göndərin.
         </Alert>
+        {loading && <BankListSkeleton />}
         <Row className="my-sm-5 my-3">
           {bankAccounts?.map((item) => (
             <Col key={item.id} className="col-lg-3 col-md-4 col-sm-6">

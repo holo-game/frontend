@@ -8,6 +8,7 @@ import {
   Button,
   Divider,
   Alert,
+  Head,
 } from "@/components";
 import { withAuth } from "../hoc";
 import { useSignIn } from "../graphql/actions/auth.action";
@@ -31,6 +32,7 @@ function Login({ user }) {
 
   return (
     <Layout hideServices={true} wrapper="login-wrapper">
+      <Head title="Giriş" />
       <Container narrow={true} className="py-3 py-sm-5">
         <Panel.Wrapper>
           <div className="text-align-center mt-4 mb-3">

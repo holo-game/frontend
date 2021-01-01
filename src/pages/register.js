@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { withAuth } from "@/hoc";
 import { useSignUp } from "@/graphql/actions/auth.action";
-import { Layout, Container, Input, Panel, Button, Alert } from "@/components";
+import { Layout, Container, Input, Panel, Button, Alert, Head } from "@/components";
 import { REGEX } from "../constants";
 
 function Register() {
@@ -57,6 +57,7 @@ function Register() {
 
   return (
     <Layout hideServices={true} wrapper="login-wrapper">
+      <Head title="Qeydiyyat" />
       <Container narrow={true} className="py-3 py-sm-5">
         <Panel.Wrapper>
           <div className="text-align-center mt-4 mb-3">

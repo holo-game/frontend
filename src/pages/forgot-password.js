@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { Layout, Container, Input, Panel, Button } from "@/components";
+import {
+  Layout,
+  Container,
+  Input,
+  Panel,
+  Button,
+  Loading,
+  Head,
+} from "@/components";
 import { withAuth } from "@/hoc";
 import { useForgotPassword } from "@/graphql/actions/auth.action";
 import { requestAlert } from "@/helpers";
@@ -12,7 +20,6 @@ function ForgotPassword() {
   const validationn = () => {
     let error = null;
     if (!REGEX.email.test(email)) {
-      console.log(REGEX.email.test(email));
       error = "Email düzgün daxil edilməyib";
     }
     return error;
@@ -22,6 +29,7 @@ function ForgotPassword() {
     e.preventDefault();
     const error = validationn();
     if (error) return requestAlert({ icon: "warning", text: error });
+    if (loading) return;
     try {
       await forgotPassword({ variables: { email } });
       requestAlert({
@@ -35,6 +43,7 @@ function ForgotPassword() {
 
   return (
     <Layout hideServices={true} wrapper="login-wrapper">
+      <Head title="Şifrə Bərpası" />
       <Container narrow={true} className="py-3 py-sm-5">
         <Panel.Wrapper>
           <div className="text-align-center mt-4 mb-3">
@@ -57,6 +66,7 @@ function ForgotPassword() {
                 />
               </Input.Group>
               <Button type="submit" variant="primary" className="w-100">
+                {loading && <Loading size="sm" className="mr-2" />}
                 Göndər
               </Button>
             </form>

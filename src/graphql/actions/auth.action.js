@@ -5,6 +5,7 @@ import {
   MY_DATA,
   IS_LOGGED_IN,
   FORGOT_PASSWORD,
+  RESET_PASSWORD,
 } from "@/graphql/queries/auth.query";
 import { isLoggedInVar } from "@/helpers";
 import Cookies from "js-cookie";
@@ -51,8 +52,8 @@ export const useSignUp = (options) => {
   return useMutation(SIGN_UP, {
     ...options,
     onError(err) {
-      console.error(err);
       userRemoveStorage();
+      console.error(err);
     },
     update(cache, { data }) {
       const user = data?.register;
@@ -63,6 +64,18 @@ export const useSignUp = (options) => {
 
 export const useForgotPassword = (options) =>
   useMutation(FORGOT_PASSWORD, options);
+
+export const useResetPassword = (options) =>
+  useMutation(RESET_PASSWORD, {
+    ...options,
+    onError(err) {
+      console.error(err);
+    },
+    update(cache, { data }) {
+      const user = data?.resetPassword;
+      userToStorage(cache, user);
+    },
+  });
 
 export const useMy = (options) =>
   useQuery(MY_DATA, {

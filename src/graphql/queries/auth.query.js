@@ -52,6 +52,22 @@ export const FORGOT_PASSWORD = gql`
   }
 `;
 
+export const RESET_PASSWORD = gql`
+  mutation($password: String!, $passwordConfirmation: String!, $code: String!) {
+    resetPassword(
+      password: $password
+      passwordConfirmation: $passwordConfirmation
+      code: $code
+    ) {
+      jwt
+      user {
+        ...User
+      }
+    }
+  }
+  ${fragments.user}
+`;
+
 export const MY_DATA = gql`
   query {
     me {

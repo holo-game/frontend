@@ -4,7 +4,7 @@ import { NAVIGATION_LIST } from "@/constants";
 
 export default function Navbar() {
   return (
-    <nav className="navbar d-none d-sm-flex">
+    <nav className="navbar">
       <div className="container">
         <div className="navbar-content">
           <ul className="navbar-nav">

@@ -44,7 +44,7 @@ export const CONTACT = {
   },
   phone: {
     title: "Telefon",
-    value: "051 000 00 00",
+    value: "050 680 55 45",
     icon: "far fa-phone-alt",
     highlight: true,
   },

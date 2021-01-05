@@ -40,6 +40,8 @@
 }
 @media (max-width: $breakpoint-mobile) {
   .header {
+    position: sticky;
+    top: 0;
     background-color: $tertiary;
     padding: 10px 0;
     .header-content {

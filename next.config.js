@@ -14,7 +14,7 @@ module.exports = withPWA({
     API_URI:
       process.env.NODE_ENV !== "production"
         ? "http://localhost:1337"
-        : "http://localhost:1337",
+        : "https://api.hologame.az",
   },
   pwa: {
     disable: process.env.NODE_ENV === "development",

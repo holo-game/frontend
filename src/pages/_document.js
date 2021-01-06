@@ -24,7 +24,7 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#272b3a" />
           <meta
             name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, maximum-scale=4, viewport-fit=cover"
+            content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
           />
           <link
             rel="apple-touch-icon"

@@ -1,5 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import { APP_NAME, APP_DESCRIPTION } from "@/constants";
+import { APP_NAME, APP_DESCRIPTION, LIVE_SUPPORT } from "@/constants";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -36,6 +36,7 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <div dangerouslySetInnerHTML={{ __html: LIVE_SUPPORT }} />
         </body>
       </Html>
     );

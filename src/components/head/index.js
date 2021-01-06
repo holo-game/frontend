@@ -14,6 +14,10 @@ export default function MyHead({ title, description, keywords, url, image }) {
       <meta property="og:image" content={`${API_URI}${image}`} />
       <meta property="twitter:title" content={title} />
       <meta property="twitter:description" content={description} />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
+      />
     </Head>
   );
 }

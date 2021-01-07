@@ -36,3 +36,4 @@ yarn-error.log*
 # amp
 service-worker.js
 workbox-*
+.env

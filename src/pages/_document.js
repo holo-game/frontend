@@ -28,7 +28,6 @@ class MyDocument extends Document {
             href="/images/icons/icon-180x180"
           />
           <link rel="manifest" href="/manifest.json" />
-          <script src="/js/scripts.js" />
         </Head>
         <body>
           <Main />
